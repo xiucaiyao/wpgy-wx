@@ -15,7 +15,7 @@ public class WeixinConstants {
 	public static final String WEIXIN_APP_SECRET = "ab08267544b660234e5519e4c6a2ff60";//AppSecret
 	
 	/** 微信支付商户号 */
-	public static final String WEIXIN_MCH_ID = "1261597801";//上农
+	public static final String WEIXIN_MCH_ID = "1261597801";// TODO
 	
 	/** 微信支付交易过程生成签名的密钥 */
 	public static final String WEIXIN_API_KEY = "wuxi20150831SHANGNONGYUYAOCHICAI";
