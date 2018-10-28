@@ -1,0 +1,27 @@
+/*sm.min.css*/
+
+/*按钮部分*/
+.button-orange {
+  color: rgb(255,149,0);
+  border-color: rgb(255,149,0);
+}
+.button:active {
+  color: rgba(255,149,0,.8);
+  border-color: rgba(255,149,0,.8);
+}
+.button-orange.button-fill {
+  color: white;
+  background-color: rgb(255,149,0);
+}
+.button-orange.button-fill:active {
+   background-color: rgba(255,149,0,.8);
+}
+/*按钮尺寸*/
+.button.button-md {
+  height: 2.3rem;
+  font-size: .8rem;
+  line-height: 2rem;
+}
+.button.button-fill.button-md {
+  line-height: 2.3rem;
+}

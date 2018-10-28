@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="customer">  
+	<resultMap id="customerMap" type="customerBean" >
+		<id column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="GROUP_CARD" property="groupCard" jdbcType="VARCHAR" />
+		<result column="ORDER_CARD" property="orderCard" jdbcType="VARCHAR" />
+		<result column="PHONE" property="phone" jdbcType="VARCHAR" />
+		<result column="LINKMAN" property="linkman" jdbcType="VARCHAR" />
+		<result column="LINKMAN_TEL" property="linkmanTel" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_TYPE" property="customerType" jdbcType="VARCHAR" />
+		<result column="VIP_CUSTOMER_TYPE" property="vipCustomerType" jdbcType="VARCHAR" />
+		<result column="BIRTHDAY" property="birthday" jdbcType="TIMESTAMP" />
+		<result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="SEND_WEEK" property="sendWeek" jdbcType="VARCHAR" />
+		<result column="EMAIL" property="email" jdbcType="VARCHAR" />
+		<result column="MEMO" property="memo" jdbcType="VARCHAR" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="PRICEGRADE" property="priceGrade" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="orderCardMap" type="com.yu.po.OrderCardBean" >
+		<id column="ORDER_CARD_ID" property="orderCardId" jdbcType="VARCHAR" />
+		<result column="ORDER_CARD_NO" property="orderCardNo" jdbcType="VARCHAR" />
+		<result column="PAY_PASSWORD" property="payPassword" jdbcType="VARCHAR" />
+		<result column="PRODUCT_TYPE" property="productType" jdbcType="VARCHAR" />
+		<result column="BEGIN_MONEY" property="beginMoney" jdbcType="DECIMAL" />
+		<result column="NOW_MONEY" property="nowMoney" jdbcType="DECIMAL" />
+		<result column="CARD_STATE" property="cardState" jdbcType="VARCHAR" />
+		<result column="MEMO" property="memo" jdbcType="VARCHAR" />
+		<result column="TEMPORARY_FLAG" property="temporaryFlag" jdbcType="BIT" />
+		<result column="DELTE_FLAG" property="delteFlag" jdbcType="BIT" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- 产品信息总记录数查询 -->
+	<select id="queryOrderCard" parameterType="orderCardBean" resultMap="orderCardMap">  
+        select ORDER_CARD_ID, ORDER_CARD_NO, PAY_PASSWORD, BEGIN_MONEY, NOW_MONEY, CARD_STATE, MEMO, TEMPORARY_FLAG, DELTE_FLAG, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME from TB_ORDER_CARD
+			where DELTE_FLAG = 0
+			<if test="orderCardNo != null and orderCardNo != '' ">
+	         	and ORDER_CARD_NO = #{orderCardNo}
+	    	</if>
+			<if test="payPassword != null and payPassword != '' ">
+	         	and PAY_PASSWORD = #{payPassword}
+	    	</if>
+    </select>
+
+	<!-- 查询用户收藏产品信息 -->
+	<select id="queryCollection" parameterType="java.util.Map" resultType="java.util.Map">
+		select COLLECTION_ID, CUSTOMER_ID, SERIAL, COLLECTION_TIME from TB_COLLECTION
+		<trim prefix="where" prefixOverrides="and|or">
+	      <if test="collectionId != null and collectionId != ''">
+	         and COLLECTION_ID=#{collectionId}
+	      </if>
+	      <if test="serial != null and serial != ''">
+	         and SERIAL=#{serial}
+	      </if>
+		</trim>
+		order by COLLECTION_TIME desc
+	</select>
+
+	<!-- 插入用户收藏（产品）信息 -->
+	<insert id="insertCollection" parameterType="java.util.Map">
+		insert into TB_COLLECTION (COLLECTION_ID, CUSTOMER_ID, SERIAL, COLLECTION_TIME)
+			values (#{collectionId}, #{customerId}, #{serial}, #{collectionTime}) 
+	</insert>
+	
+	<!-- 分页查询用户收藏产品信息 -->
+	<select id="queryCollectionForPage" parameterType="java.util.Map" resultType="java.util.Map">
+		select top ${pageItems} TB_COLLECTION.SERIAL, COLLECTION_TIME, PRODUCT_TYPE, NAME, SPEC, PRICE, SMALLPIC from TB_COLLECTION
+		inner join V_PRODUCT_PRICE on V_PRODUCT_PRICE.SERIAL=TB_COLLECTION.SERIAL
+		where is_online=1 and V_PRODUCT_PRICE.price is not null and COLLECTION_ID not in
+		(
+		select top ${startItem} COLLECTION_ID from TB_COLLECTION 
+		inner join V_PRODUCT_PRICE on V_PRODUCT_PRICE.SERIAL=TB_COLLECTION.SERIAL
+		where is_online=1 and V_PRODUCT_PRICE.price is not null
+	      <if test="customerId != null and customerId != ''">
+	         and CUSTOMER_ID=#{customerId}
+	      </if>
+	      <if test="collectionId != null and collectionId != ''">
+	         and COLLECTION_ID=#{collectionId}
+	      </if>
+	      <if test="serial != null and serial != ''">
+	         and TB_COLLECTION.SERIAL=#{serial}
+	      </if>
+			order by COLLECTION_TIME desc
+		)
+		<if test="customerId != null and customerId != ''">
+	    	and CUSTOMER_ID=#{customerId}
+		</if>
+      	<if test="collectionId != null and collectionId != ''">
+         	and COLLECTION_ID=#{collectionId}
+      	</if>
+      	<if test="serial != null and serial != ''">
+         	and TB_COLLECTION.SERIAL=#{serial}
+      	</if>
+		order by COLLECTION_TIME desc
+	</select>
+	
+	<!-- 分页查询用户收藏产品记录数 -->
+	<select id="queryCollectionCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(TB_COLLECTION.SERIAL) from TB_COLLECTION
+		inner join V_PRODUCT_PRICE on V_PRODUCT_PRICE.SERIAL=TB_COLLECTION.SERIAL
+		where is_online=1 and V_PRODUCT_PRICE.price is not null
+		<if test="customerId != null and customerId != ''">
+	    	and CUSTOMER_ID=#{customerId}
+		</if>
+      	<if test="collectionId != null and collectionId != ''">
+         	and COLLECTION_ID=#{collectionId}
+      	</if>
+      	<if test="serial != null and serial != ''">
+         	and TB_COLLECTION.SERIAL=#{serial}
+      	</if>
+	</select>
+
+	<!-- 客户信息查询 -->
+	<select id="queryCustomer" parameterType="customerBean" resultMap="customerMap">
+		select CUSTOMER_ID, NAME, GROUP_CARD, ORDER_CARD, PHONE, LINKMAN, LINKMAN_TEL, CUSTOMER_TYPE, VIP_CUSTOMER_TYPE, BIRTHDAY, LOGIN_NAME, PASSWORD, SEND_WEEK, EMAIL, MEMO, PRICEGRADE from TB_CUSTOMER
+		<trim prefix="where" prefixOverrides="and|or">
+	      <if test="loginName != null and loginName != ''">
+	         and LOGIN_NAME=#{loginName}
+	      </if>
+	      <if test="password != null and password != ''">
+	         and PASSWORD=#{password}
+	      </if>
+		</trim>
+	</select>
+	
+	<!-- 根据ID查询客户信息 -->
+	<select id="queryCustomerById" parameterType="String" resultMap="customerMap">
+		select CUSTOMER_ID, NAME, GROUP_CARD, ORDER_CARD, PHONE, LINKMAN, LINKMAN_TEL, CUSTOMER_TYPE, BIRTHDAY, LOGIN_NAME, PASSWORD, SEND_WEEK, EMAIL, MEMO from TB_CUSTOMER
+			where CUSTOMER_ID=#{value}
+	</select>
+	
+	<!-- 插入用户信息 -->
+	<insert id="insertCustomer" parameterType="customerBean">
+		insert into TB_CUSTOMER (CUSTOMER_ID, NAME, GROUP_CARD, ORDER_CARD, PHONE, LINKMAN, LINKMAN_TEL, CUSTOMER_TYPE, BIRTHDAY, LOGIN_NAME, PASSWORD, SEND_WEEK, EMAIL, PYSX, MEMO, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME)
+			values (#{customerId}, #{name}, #{groupCard}, #{orderCard}, #{phone}, #{linkman}, #{linkmanTel}, #{customerType}, #{birthday}, #{loginName}, #{password}, #{sendWeek}, #{email}, #{nameFirstHeadLetter}, #{memo}, #{createUser}, #{createTime}, #{updateUser}, #{updateTime})
+	</insert>
+	
+	<!-- 修改用户点餐会员卡号信息 -->
+	<update id="updateCustomerOrderCard" parameterType="customerBean">
+		update TB_CUSTOMER set ORDER_CARD=#{orderCard}, UPDATE_USER=#{updateUser}, UPDATE_TIME=#{updateTime} where CUSTOMER_ID=#{customerId}
+	</update>
+	
+	<!-- 修改用户套餐会员卡号信息 -->
+	<update id="updateCustomerGroupCard" parameterType="customerBean">
+		update TB_CUSTOMER set GROUP_CARD=#{groupCard}, UPDATE_USER=#{updateUser}, UPDATE_TIME=#{updateTime} where CUSTOMER_ID=#{customerId}
+	</update>
+	
+	<!-- 查询会员地址信息 -->
+	<select id="queryCustomerAddress" parameterType="customerAddressBean" resultType="customerAddressBean">
+		select CUSTOMER_ADDRESS_ID as customerAddressId, CUSTOMER_ID as customerId, PROVINCE as province, 
+			CITY as city, COUNTY as county, TOWN as town, LINKMAN as linkman, LINKMAN_TEL as linkmanTel, DETAIL_ADDRESS as detailAddress, 
+			IS_DEFAULT_ADDRESS as isDefaultAddress, LINA as lina, LINE_ORDER as lineOrder, IS_AUDIT as isAudit, IS_SEND_SCOPE as isSendScope, CREATE_USER as createUser, CREATE_TIME as createTime 
+			from TB_CUSTOMER_ADDRESS
+			<trim prefix="where" prefixOverrides="and|or">
+		    	<if test="customerId != null and customerId != ''">
+		        	and CUSTOMER_ID=#{customerId}
+		      	</if>
+		      	<if test="customerAddressId != null and customerAddressId != ''">
+		        	and CUSTOMER_ADDRESS_ID=#{customerAddressId}
+		      	</if>
+		      	<if test="isDefaultAddress != null">
+		        	and IS_DEFAULT_ADDRESS=#{isDefaultAddress}
+		      	</if>
+		      	<if test="isSendScope != null">
+		        	and IS_SEND_SCOPE=#{isSendScope}
+		      	</if>
+			</trim>
+	</select>
+	
+	<!-- 新增会员地址信息 -->
+	<insert id="insertCustomerAddress" parameterType="customerAddressBean">
+		insert into TB_CUSTOMER_ADDRESS (CUSTOMER_ADDRESS_ID, CUSTOMER_ID, PROVINCE, CITY, COUNTY, TOWN, LINKMAN, LINKMAN_TEL, DETAIL_ADDRESS, IS_DEFAULT_ADDRESS, LINA, LINE_ORDER, IS_AUDIT, IS_SEND_SCOPE, CREATE_USER, CREATE_TIME)
+			values (#{customerAddressId}, #{customerId}, #{province}, #{city}, #{county}, #{town}, #{linkman}, #{linkmanTel}, #{detailAddress}, #{isDefaultAddress}, #{lina}, #{lineOrder}, #{isAudit}, #{isSendScope}, #{createUser}, #{createTime})
+	</insert>
+	
+	<!-- 新增会员卡信息记录 -->
+	<insert id="insertOrderCard" parameterType="orderCardBean">
+		insert into TB_ORDER_CARD (ORDER_CARD_ID, ORDER_CARD_NO, PAY_PASSWORD, BEGIN_MONEY, NOW_MONEY, CARD_STATE, MEMO, TEMPORARY_FLAG, DELTE_FLAG, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME)
+			values (#{orderCardId}, #{orderCardNo}, #{payPassword}, #{beginMoney}, #{nowMoney}, #{cardState}, #{memo}, #{temporaryFlag}, #{delteFlag}, #{createUser}, #{createTime}, #{updateUser}, #{updateTime})
+	</insert>
+	
+	<!-- 新增充值消费记录 -->
+	<insert id="insertCardRecord" parameterType="cardRecordBean">
+		insert into TB_CARD_RECORD(CARD_RECORD_ID, CARD_TYPE, CARD_NO, RECORD_DATE, RECORD_TYPE, IN_OUT_MONEY, GIVE_MONEY, MEMO, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME)
+			values (#{cardRecordId}, #{cardType}, #{cardNo}, #{recordDate}, #{recordType}, #{inOutMoney}, #{giveMoney}, #{memo}, #{createUser}, #{createTime}, #{updateUser}, #{updateTime})
+	</insert>
+	
+	<!-- 充值会员卡金额 -->
+	<update id="updateOrderCardMoney" parameterType="orderCardBean">
+		update TB_ORDER_CARD set NOW_MONEY=#{nowMoney}, UPDATE_USER=#{updateUser}, UPDATE_TIME=#{updateTime}, MEMO=#{memo}
+			where ORDER_CARD_ID=#{orderCardId}
+	</update>
+	
+	<!-- 新增产品评论信息 -->
+	<insert id="insertProductDescribe" parameterType="productDescribeBean">
+		insert into TB_PRODUCT_DESCRIBE(PRODUCT_DESCRIBE_ID,SERIAL,PRODUCT_TYPE,CUSTOMER_ID,DESCRIBE_DATE,CONTENT,IS_AUDIT,REPLY_DATE,REPLY_CONTENT)
+			values(#{productDescribeId},#{serial},#{productType},#{customerId},#{describeDate},#{content},#{isAudit},#{replyDate},#{replyContent})
+	</insert>
+	
+	<!-- 查询产品评论信息 -->
+	<select id="queryProductDescribe" parameterType="productDescribeBean" resultType="productDescribeBean">
+		select PRODUCT_DESCRIBE_ID as productDescribeId, SERIAL as serial, PRODUCT_TYPE as productType, TB_PRODUCT_DESCRIBE.CUSTOMER_ID as customerId,
+			TB_CUSTOMER.LOGIN_NAME as customerLoginName, DESCRIBE_DATE as describeDate, CONTENT as content, IS_AUDIT as isAudit, REPLY_DATE as replyDate, 
+			REPLY_CONTENT as replyContent
+			from TB_PRODUCT_DESCRIBE
+			inner join TB_CUSTOMER on TB_CUSTOMER.CUSTOMER_ID=TB_PRODUCT_DESCRIBE.CUSTOMER_ID
+			<trim prefix="where" prefixOverrides="and|or">
+		    	<if test="serial != null and serial != ''">
+		        	and SERIAL=#{serial}
+		      	</if>
+		      	<if test="productType != null and productType != ''">
+		        	and PRODUCT_TYPE=#{productType}
+		      	</if>
+		      	<if test="customerId != null and customerId != ''">
+		        	and TB_PRODUCT_DESCRIBE.CUSTOMER_ID=#{customerId}
+		      	</if>
+		      	<if test="isAudit != null">
+		        	and IS_AUDIT=#{isAudit}
+		      	</if>
+			</trim>
+			order by describeDate desc
+	</select>
+	
+	<!-- 修改商业券状态 -->
+	<update id="updateVoucherState" parameterType="voucherBean">
+		update TB_VOUCHER set STATE=#{state}, UPDATE_USER=#{updateUser}, UPDATE_TIME=#{updateTime}, BUY_MAN=#{buyMan},
+			RECHANGE_DATE=#{rechangeDate}, RECHARGE_CUSTOMER_ID=#{rechargeCustomerId}
+		where VOUCHER_ID=#{voucherId}
+	</update>
+	
+	<!-- 修改用户信息 -->
+	<update id="updateCustomer" parameterType="customerBean">
+		update TB_CUSTOMER set NAME=#{name}, PHONE=#{phone}, LINKMAN=#{linkman}, LINKMAN_TEL=#{linkmanTel}, BIRTHDAY=#{birthday}, EMAIL=#{email}, MEMO=#{memo},
+			UPDATE_USER=#{updateUser}, UPDATE_TIME=#{updateTime} where CUSTOMER_ID=#{customerId}
+	</update>
+	
+	<!-- 修改用户密码 -->
+	<update id="updateCustomerPassword" parameterType="java.util.Map">
+		update TB_CUSTOMER set PASSWORD=#{newPassword}, UPDATE_USER=#{updateUser}, UPDATE_TIME=#{updateTime} 
+			where CUSTOMER_ID=#{customerId} and LOGIN_NAME=#{loginName} and PASSWORD=#{oldPassword}
+	</update>
+	
+	<!-- 修改用户点餐会员卡密码 -->
+	<update id="updateOrderCardPassword" parameterType="java.util.Map">
+		update TB_ORDER_CARD set PAY_PASSWORD=#{newPassword}, UPDATE_USER=#{updateUser}, UPDATE_TIME=#{updateTime} 
+			where ORDER_CARD_NO=#{orderCardNo} and PAY_PASSWORD=#{oldPassword} and DELTE_FLAG=0
+	</update>
+	
+	<!-- 插入客户投诉建议数据 -->
+	<insert id="insertCustomerAdvice" parameterType="customerAdviceBean">
+		insert into TB_CUSTOMER_ADVICE (CUSTOMER_ADVICE_ID, CUSTOMER_ID, ADVICE_TYPE, ADVICE_DEPT, CONTENT, MEMO, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER)
+			values(#{customerAdviceId}, #{customerId}, #{adviceType}, #{adviceDept}, #{content}, #{memo}, #{createTime}, #{createUser}, #{updateTime}, #{updateUser})
+	</insert>
+	
+    <!-- 判断客户是否特殊大客户(主要是判断当前特殊客户表中是否有数据) -->
+    <select id="queryIsSpecialCustomer" parameterType="java.lang.String" resultType="java.lang.String">
+    	select top 1 serial from V_SPECIAL_CUSTOMER_PRODUCT_PRICE
+			where is_online=1 and price is not null and customer_id=#{value}
+    </select>
+    
+    <!-- 查询客户购买的充值卡信息 -->
+    <select id="queryCustomerRechargeCard" parameterType="java.lang.String" resultType="java.util.Map">
+    	select TB_VOUCHER.VOUCHER_ID, VOUCHER_NO, STATE, TB_VOUCHER.PAR_VALUE, TB_VOUCHER.SALE_PRICE, TB_CARD_TYPE.NAME as CARD_TYPE_NAME, BEGIN_PAY_TIME from TB_VOUCHER 
+			inner join TB_CUSTOMER on CUSTOMER_ID=TB_VOUCHER.BUY_MAN
+			left join TB_CARD_TYPE on TB_CARD_TYPE.CARD_TYPE_ID=TB_VOUCHER.CARD_TYPE_ID
+			inner join TB_PAY_TRADE on OUT_TRADE_NO=TB_VOUCHER.VOUCHER_ID
+				where TB_CUSTOMER.CUSTOMER_ID=#{value}
+    </select>
+    
+    <!-- 查询客户购买的套餐卡信息 -->
+    <select id="queryCustomerGroupCard" parameterType="java.lang.String" resultType="java.util.Map">
+    	select TB_GROUP_CARD.GROUP_CARD_ID, TB_GROUP_CARD.GROUP_CARD_NO, CARD_STATE, TB_CARD_TYPE.NAME as CARD_TYPE_NAME, NOW_MONEY, BEGIN_PAY_TIME from TB_GROUP_CARD
+			inner join TB_CUSTOMER on TB_GROUP_CARD.BUY_MAN=TB_CUSTOMER.CUSTOMER_ID
+			left join TB_CARD_TYPE on TB_CARD_TYPE.CARD_TYPE_ID=TB_GROUP_CARD.CARD_TYPE_ID
+			inner join TB_PAY_TRADE on TB_GROUP_CARD.GROUP_CARD_ID=TB_PAY_TRADE.OUT_TRADE_NO
+    			where TB_CUSTOMER.CUSTOMER_ID=#{value}
+    </select>
+</mapper>

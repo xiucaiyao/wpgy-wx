@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.action.extension" value="action"></constant>
+	<constant name="struts.serve.static.browserCache" value="action"></constant>
+    <constant name="struts.configuration.xml.reload" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.ui.theme" value="simple" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    
+    <package name="miblieCommon" namespace="/" extends="struts-default">
+    	<interceptors>
+            <interceptor name="exceptionInterceptor" class="com.mobile.interceptor.ExceptionInterceptor" />
+            <interceptor name="authInterceptor" class="com.mobile.interceptor.AuthInterceptor" />
+			<interceptor-stack name="commonStack">
+				<interceptor-ref name="defaultStack" />
+ 				<interceptor-ref name="exceptionInterceptor" />
+ 				<interceptor-ref name="authInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="commonStack" />
+    
+		<default-action-ref name="mobileBaseAction" />
+		
+		<global-results>
+			<result name="error">/error/mobile_error.jsp</result>
+			<result name="login">/WEB-INF/mjsp/login.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+        	<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+        </global-exception-mappings>
+        
+        <action name="mobileBaseAction" method="pageJump" />
+    </package>
+
+    <package name="weixin" extends="miblieCommon" namespace="/">
+        <global-results>
+    		<result name="regist">/WEB-INF/mjsp/regist.jsp</result>
+    		<result name="marketIndex">/WEB-INF/mjsp/market_index.jsp</result>
+    		<result name="dishDetails">/WEB-INF/mjsp/dish_details.jsp</result>
+    		<result name="registSuccessMessage">/WEB-INF/mjsp/regist_success_message.jsp</result>
+    		<result name="shopCar">/WEB-INF/mjsp/shop_car.jsp</result>
+    		<result name="orderDetail">/WEB-INF/mjsp/order_detail.jsp</result>
+    		<result name="orderList">/WEB-INF/mjsp/order_list.jsp</result>
+    		<result name="orderList">/WEB-INF/mjsp/order_list.jsp</result>
+    		<result name="pay">/WEB-INF/mjsp/pay.jsp</result>
+    		<result name="paySuccess">/WEB-INF/mjsp/pay_success.jsp</result>
+    		<result name="payFail">/WEB-INF/mjsp/pay_fail.jsp</result>
+    		<result name="refundApply">/WEB-INF/mjsp/refund_apply.jsp</result>
+    	</global-results>
+    	<action name="weixinApi" class="weixinAction" method="weixinApi"/>
+    	<action name="weixinSdk" class="weixinAction" method="weixinSdk"/>
+    	<action name="payWeixinAsync" class="weixinAction" method="payWeixinAsync"/>
+    	<action name="getOpenIdByCode" class="weixinAction" method="getOpenIdByCode"/>
+    	<action name="fans" class="fansAction" />
+    	<action name="market" class="marketAction" />
+    	
+    	<action name="m2redirect" class="weixinAction" method="m2redirect"/>
+    	
+    </package>
+</struts>

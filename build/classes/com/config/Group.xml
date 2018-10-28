@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="group">
+
+	<!-- 查询用户蔬菜套餐信息 -->
+	<select id="queryGroupCard" parameterType="java.lang.String" resultType="java.util.Map">
+		<![CDATA[
+		select TB_GROUP_CARD.GROUP_CARD_ID, TB_GROUP_CARD.GROUP_CARD_NO, TB_GROUP_CARD.BEGIN_MONEY, TB_GROUP_CARD.NOW_MONEY, TB_GROUP_CARD.CARD_STATE,
+			TB_GROUP_CARD_DETAIL.SEND_TIMES, TB_GROUP_CARD_DETAIL.SURPLUS_TIMES, BLAND_WEEK, SEND_WEEK,
+			TB_GROUP.GROUP_ID, TB_GROUP.NAME, TB_GROUP.PRICE, BEGIN_DATE, END_DATE from TB_GROUP_CARD
+			inner join TB_GROUP_CARD_DETAIL on TB_GROUP_CARD.GROUP_CARD_NO=TB_GROUP_CARD_DETAIL.GROUP_CARD_NO and IS_VEGETABLES_GROUP=1
+			inner join TB_GROUP on TB_GROUP.GROUP_ID=TB_GROUP_CARD_DETAIL.GROUP_ID
+			where BEGIN_DATE <= CONVERT(varchar(100), GETDATE(), 23) and end_date >= CONVERT(varchar(100), GETDATE(), 23) 
+				and TB_GROUP_CARD.GROUP_CARD_NO=#{value}
+		]]>
+	</select>
+
+	<!-- 查询套餐数量 -->
+	<select id="queryGroupNumber" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select count(1) from TB_GROUP_DETAIL where GROUP_ID = #{value} and PRICE > 0
+	</select>
+
+	<!-- 查询套餐免费产品 -->
+	<select id="queryGroupFreeProduct" parameterType="java.lang.String" resultType="java.util.Map">
+		select GROUP_DETAIL_ID,  GROUP_ID,  SERIAL,  NAME,  SPEC,  NUM,  PRICE,  MEMO from TB_GROUP_DETAIL
+			where PRICE = 0
+	</select>
+
+	<!-- 查询可选套餐产品列表 -->
+	<select id="queryGroupOptionalProduct" resultType="java.util.Map">
+		select TB_GROUP_OPTIONAL_PRODUCT.SERIAL, TB_GROUP_OPTIONAL_PRODUCT.SPEC, TB_PRODUCT.NAME, TB_PRODUCT_INFO.SMALLPIC from TB_GROUP_OPTIONAL_PRODUCT 
+			inner join TB_PRODUCT on TB_GROUP_OPTIONAL_PRODUCT.SERIAL = TB_PRODUCT.SERIAL
+			left join TB_PRODUCT_INFO on TB_PRODUCT.SERIAL=TB_PRODUCT_INFO.SERIAL
+	</select>
+
+	<!-- 查询超过当日的蔬菜套餐配送日期 -->
+	<select id="queryGroupOrder" resultType="java.util.Map" parameterType="java.util.Map">
+		<![CDATA[
+		select top 1 ORDER_ID, ORDER_DATE, SEND_DATE, ORDER_STATE, ORDER_SOURCE from TB_ORDER 
+			where GROUP_ID=#{groupId} and CUSTOMER_ID=#{customerId}
+			order by SEND_DATE desc
+		]]>
+	</select>
+	
+    <!-- 修改套餐卡金额 -->
+    <update id="updateGroupCardMoney" parameterType="java.util.Map">
+    	update TB_GROUP_CARD set NOW_MONEY=#{NOW_MONEY} where GROUP_CARD_ID=#{GROUP_CARD_ID}
+    </update>
+	
+	<!-- 根据ID查询套餐卡-->
+	<select id="queryGroupCardById" resultType="java.util.Map" parameterType="java.lang.String">
+		<![CDATA[
+		select GROUP_CARD_ID, GROUP_CARD_NO, BEGIN_MONEY, NOW_MONEY, CARD_STATE, CARD_TYPE_ID, BUY_MAN, IS_GIVE, IS_ONLINE_SALE, MEMO, RECHARGE_CUSTOMER_ID
+			from TB_GROUP_CARD where GROUP_CARD_ID=#{value}
+		]]>
+	</select>
+	
+	<!-- 根据套餐卡号查询套餐卡-->
+	<select id="queryGroupCardByCardNo" resultType="java.util.Map" parameterType="java.lang.String">
+		<![CDATA[
+		select GROUP_CARD_ID, GROUP_CARD_NO, BEGIN_MONEY, NOW_MONEY, CARD_STATE, TB_GROUP_CARD.CARD_TYPE_ID, TB_CARD_TYPE.NAME as CARD_TYPE_NAME, 
+			BUY_MAN, IS_GIVE, TB_GROUP_CARD.MEMO, CREATE_TIME, TB_GROUP_CARD.RECHARGE_CUSTOMER_ID from TB_GROUP_CARD 
+				left join TB_CARD_TYPE on TB_CARD_TYPE.CARD_TYPE_ID=TB_GROUP_CARD.CARD_TYPE_ID
+			where GROUP_CARD_NO=#{value}
+		]]>
+	</select>
+	
+	<!-- 查询套餐详细信息 -->
+	<select id="queryGroupCardDetail" resultType="java.util.Map" parameterType="java.lang.String">
+		select GROUP_CARD_DETAIL_ID, GROUP_CARD_NO, NEW_GROUP_CARD_NO, SEND_TIMES, SURPLUS_TIMES, GIVE_TIMES, IS_VEGETABLES_GROUP, GROUP_ID, GROUP_NAME,
+			SEND_DATE, BLAND_WEEK, SEND_WEEK, MEMO
+				from TB_GROUP_CARD_DETAIL where GROUP_CARD_NO=#{value}
+	</select>
+	
+    <!-- 修改套餐卡购买状态 -->
+    <update id="updateGroupCardState" parameterType="java.util.Map">
+    	update TB_GROUP_CARD set BUY_MAN=#{BUY_MAN}, CARD_STATE=#{CARD_STATE}, SALE_DATE=#{SALE_DATE}, 
+    		RECHANGE_DATE=#{RECHANGE_DATE}, UPDATE_USER=#{UPDATE_USER}, UPDATE_TIME=#{UPDATE_TIME}, RECHARGE_CUSTOMER_ID=#{RECHARGE_CUSTOMER_ID}
+    		where GROUP_CARD_ID=#{GROUP_CARD_ID}
+    		<if test="CARD_TYPE_ID != null and CARD_TYPE_ID !='' " >
+				<![CDATA[
+					 and CARD_TYPE_ID=#{CARD_TYPE_ID}
+				]]>
+			</if>
+    </update>
+    
+    <!-- 修改套餐卡详细次数 -->
+    <update id="updateGroupCardDetailTimes" parameterType="java.util.Map">
+    	update TB_GROUP_CARD_DETAIL set NEW_GROUP_CARD_NO=#{NEW_GROUP_CARD_NO}, SEND_TIMES=#{SEND_TIMES}, SURPLUS_TIMES=#{SURPLUS_TIMES}, GIVE_TIMES=#{GIVE_TIMES}, UPDATE_USER=#{UPDATE_USER}, UPDATE_TIME=#{UPDATE_TIME}
+    		where GROUP_CARD_DETAIL_ID=#{GROUP_CARD_DETAIL_ID}
+    </update>
+    
+    <!-- 修改套餐卡详细配送信息 -->
+    <update id="updateGroupCardDetailSend" parameterType="java.util.Map">
+    	update TB_GROUP_CARD_DETAIL set SEND_DATE=#{SEND_DATE}, BLAND_WEEK=#{BLAND_WEEK}, SEND_WEEK=#{SEND_WEEK}, MEMO=#{MEMO}
+    		where GROUP_CARD_DETAIL_ID=#{GROUP_CARD_DETAIL_ID}
+    </update>
+    
+    <!-- 新增套餐卡详细配送信息 -->
+    <insert id="insertGroupCardDetail" parameterType="java.util.Map">
+    	insert into TB_GROUP_CARD_DETAIL (GROUP_CARD_DETAIL_ID,  GROUP_CARD_NO, NEW_GROUP_CARD_NO, SEND_TIMES,  SURPLUS_TIMES, GIVE_TIMES, IS_VEGETABLES_GROUP,  GROUP_ID,  GROUP_NAME,  SEND_DATE,  BLAND_WEEK,  SEND_WEEK,  MEMO,  DELTE_FLAG,  CREATE_USER,  CREATE_TIME,  UPDATE_USER,  UPDATE_TIME)
+    		values (#{GROUP_CARD_DETAIL_ID},  #{GROUP_CARD_NO}, #{NEW_GROUP_CARD_NO},  #{SEND_TIMES},  #{SURPLUS_TIMES}, #{GIVE_TIMES}, #{IS_VEGETABLES_GROUP},  #{GROUP_ID},  #{GROUP_NAME},  #{SEND_DATE},  #{BLAND_WEEK},  #{SEND_WEEK},  #{MEMO},  #{DELTE_FLAG},  #{CREATE_USER},  #{CREATE_TIME},  #{UPDATE_USER},  #{UPDATE_TIME})
+    </insert>
+    
+    <!-- 根据ID查询套餐详细信息 -->
+	<select id="queryGroupCardDetailById" resultType="java.util.Map" parameterType="java.lang.String">
+		select GROUP_CARD_DETAIL_ID,  GROUP_CARD_NO,  SEND_TIMES,  SURPLUS_TIMES,  IS_VEGETABLES_GROUP,  GROUP_ID,  GROUP_NAME, SEND_DATE,  BLAND_WEEK,  SEND_WEEK,  MEMO
+				from TB_GROUP_CARD_DETAIL where GROUP_CARD_DETAIL_ID=#{groupCardDetailId}
+	</select>
+</mapper>

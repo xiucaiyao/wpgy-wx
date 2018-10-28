@@ -1,0 +1,162 @@
+/**
+ * 公用样式
+ */
+body {
+    font-family: "微软雅黑";
+    height: auto;
+}
+em,
+i {
+  font-style: normal;
+  font-weight: normal;
+}
+/**图标*/
+.icon.icon-zxpx ,.icon.icon-zxpx2,
+.icon.icon-dcspx,.icon.icon-dcspx2,
+.icon.icon-ybsc,.icon.icon-ybsc2,
+.icon.icon-my,.icon.icon-my2,
+.icon.icon-back,
+.icon.icon-search,.icon.icon-search2,
+.icon.icon-right-arrow,.icon.icon-right-arrow2,
+.icon.icon-refresh,.icon.icon-refresh2,
+.icon.icon-collected,.icon.icon-collected2,
+.icon.icon-collect,.icon.icon-collect2,
+.icon.icon-course-name,.icon.icon-course-name2,
+.icon.icon-study-time,.icon.icon-study-time2,
+.icon.icon-teacher,.icon.icon-teacher2,
+.icon.icon-credit,.icon.icon-credit2,
+.icon.icon-period,.icon.icon-period2{
+	background-size: 100% 100%;
+	background-position: center;
+	display: inline-block;
+	height: 1rem;
+	width:1rem;
+}
+.icon-search:before {
+    content: "";
+}
+.icon-refresh:before{
+	content:"" ;
+}
+
+/**图标end*/
+
+
+/**边距**/
+
+/**颜色*/
+.color-white{
+	color: rgb(255,255,255)!important;
+}
+.color-black{
+	color:rgb(42,79,100);
+}
+.color-blue{
+	color:rgb(99,154,255)!important;
+}
+.color-gray{
+	color:rgb(170,180,187)!important;
+}
+
+/**位置*/
+.text-align-right{
+	text-align: right;
+}
+
+/**字体*/
+
+/**相当于设计图中18px的字体*/
+.font45{
+	font-size: .45rem!important;
+}
+
+/**相当于设计图中20px的字体*/
+.font5{
+	font-size: .5rem!important;
+}
+
+/**相当于设计图中22px的字体*/
+.font55{
+	font-size: .55rem!important;
+}
+
+/**相当于设计图中24px的字体*/
+.font6{
+	font-size: .6rem!important;
+}
+
+/**相当于设计图中26px的字体*/
+.font65{
+	font-size: .65rem!important;
+}
+
+/**相当于设计图中28px的字体*/
+.font7{
+	font-size: .7rem!important;
+}
+
+/**相当于设计图中34px的字体*/
+.font85{
+	font-size: .85rem!important;
+}
+
+/**行高*/
+.line6{
+	line-height: .6rem;
+}
+
+
+/**覆盖框架中得某些默认组件样式start**/
+.bar-tab .tab-item .icon{
+	width: 1rem;
+	height: 1rem;
+}
+.bar-tab .tab-item.active, .bar-tab .tab-item:active{
+	color:rgb(99,154,255);
+}
+.bar-tab .tab-item .icon ~ .tab-label{
+	font-size: .5rem;
+	top:initial;
+}
+input[type=search]::-moz-placeholder { color: rgb(255,255,255); }
+input[type=search]::-webkit-input-placeholder { color: rgb(255,255,255); }
+input[type=search]:-ms-input-placeholder { color: rgb(255,255,255); }
+
+.list-block.media-list .item-link .item-title-row, .list-block li.media-item .item-link .item-title-row{
+	background-image: url(../img/icon-右箭头@2x.png);
+	background-size: .65rem .65rem;
+}
+.bar .button-nav.pull-left {
+    margin-left: initial;
+}
+.bar .button.pull-left {
+    margin-right: initial;
+}
+.bar .button-nav.pull-right {
+    margin-right: initial;
+}
+.bar .button.pull-right {
+    margin-left: initial;
+}
+
+.content-block-title{
+	font-size: .65rem;
+}
+/**覆盖框架中得某些默认组件样式end**/
+
+.row .col-72 {
+  width: 68.00000000000001%;
+  margin-left: 4%;
+}
+.row.no-gutter .col-72 {
+  width: 72%;
+  margin: 0;
+}
+.row .col-28 {
+  width: 24%;
+  margin-left: 4%;
+}
+.row.no-gutter .col-28 {
+  width: 28%;
+  margin: 0;
+}

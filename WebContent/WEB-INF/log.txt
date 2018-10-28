@@ -1,0 +1,764 @@
+2018 十月 28 20:05:21,409  INFO ContextLoader:272 - Root WebApplicationContext: initialization started
+2018 十月 28 20:05:21,632  INFO XmlWebApplicationContext:500 - Refreshing Root WebApplicationContext: startup date [Sun Oct 28 20:05:21 CST 2018]; root of context hierarchy
+2018 十月 28 20:05:21,813  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [com/config/applicationContext.xml]
+2018 十月 28 20:05:23,804  INFO PropertyPlaceholderConfigurer:177 - Loading properties file from class path resource [com/config/jdbc.properties]
+2018 十月 28 20:05:23,926  INFO DefaultListableBeanFactory:581 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@12ce4f6: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,baseDao,cardDaoImpl,customerDao,groupDao,orderDao,productDao,fansAction,marketAction,mobileBaseAction,weixinAction,fansDao,marketDao,mobileBaseDao,fansService,marketServiceImpl,weixinService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlSessionFactory,sqlSessionTemplate,transactionManager,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+2018 十月 28 20:05:24,107  INFO MLog:80 - MLog clients using log4j logging.
+2018 十月 28 20:05:24,185  INFO C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2018 十月 28 20:05:25,750  INFO AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1399y1frjgak4jejbm|68c04d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.microsoft.sqlserver.jdbc.SQLServerDriver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1399y1frjgak4jejbm|68c04d, idleConnectionTestPeriod -> 600000, initialPoolSize -> 20, jdbcUrl -> , maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600000, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 500, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 20, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2018 十月 28 20:05:45,692  WARN ThreadPoolAsynchronousRunner:608 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@18b5948 -- APPARENT DEADLOCK!!! Creating emergency threads for unassigned pending tasks!
+2018 十月 28 20:05:45,698  WARN ThreadPoolAsynchronousRunner:624 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@18b5948 -- APPARENT DEADLOCK!!! Complete Status: 
+	Managed Threads: 3
+	Active Threads: 3
+	Active Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@ca6a55 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@10b11a1 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1b267b7 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1)
+	Pending Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1b74948
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@2c2222
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@174e74b
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1fcfd0f
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@49fe73
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1e043a8
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@79ed68
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@d163cf
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@efd26f
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@e099cb
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@190f46a
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@19e9c94
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@39bb6d
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@402aaa
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@b12f3d
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@94720d
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1cbc11d
+Pool thread stack traces:
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+
+
+2018 十月 28 20:05:54,815  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@ca6a55 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2018 十月 28 20:05:54,815  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@10b11a1 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2018 十月 28 20:05:54,815  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1b267b7 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2018 十月 28 20:05:54,829 ERROR BaseExecutor:38 - Could not get a databaseId from dataSource
+java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:106)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:529)
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:128)
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseProductName(VendorDatabaseIdProvider.java:76)
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseName(VendorDatabaseIdProvider.java:61)
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseId(VendorDatabaseIdProvider.java:49)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:395)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:295)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1514)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1452)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:456)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:294)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:225)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:291)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:876)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:818)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:735)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:556)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:92)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:456)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:294)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:225)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:291)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:609)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:469)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:383)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:283)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:112)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4521)
+	at org.apache.catalina.core.StandardContext$1.call(StandardContext.java:5004)
+	at org.apache.catalina.core.StandardContext$1.call(StandardContext.java:4999)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1319)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:557)
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:477)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:525)
+	... 40 more
+2018 十月 28 20:05:55,469  INFO ContextLoader:301 - Root WebApplicationContext: initialization completed in 34046 ms
+2018 十月 28 20:05:55,948  INFO XmlConfigurationProvider:46 - Parsing configuration file [struts-default.xml]
+2018 十月 28 20:05:56,147  INFO XmlConfigurationProvider:46 - Parsing configuration file [struts-plugin.xml]
+2018 十月 28 20:05:56,218  INFO XmlConfigurationProvider:46 - Parsing configuration file [com/config/struts.xml]
+2018 十月 28 20:05:56,223  INFO AbstractBeanSelectionProvider:46 - Choosing bean (spring) for (com.opensymphony.xwork2.ObjectFactory)
+2018 十月 28 20:05:56,223  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ActionFactory)
+2018 十月 28 20:05:56,224  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ResultFactory)
+2018 十月 28 20:05:56,224  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ConverterFactory)
+2018 十月 28 20:05:56,224  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.InterceptorFactory)
+2018 十月 28 20:05:56,224  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ValidatorFactory)
+2018 十月 28 20:05:56,225  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.UnknownHandlerFactory)
+2018 十月 28 20:05:56,225  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.FileManagerFactory)
+2018 十月 28 20:05:56,225  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.XWorkConverter)
+2018 十月 28 20:05:56,226  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.CollectionConverter)
+2018 十月 28 20:05:56,226  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.ArrayConverter)
+2018 十月 28 20:05:56,227  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.DateConverter)
+2018 十月 28 20:05:56,227  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.NumberConverter)
+2018 十月 28 20:05:56,227  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.StringConverter)
+2018 十月 28 20:05:56,227  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionPropertiesProcessor)
+2018 十月 28 20:05:56,228  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionFileProcessor)
+2018 十月 28 20:05:56,228  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionAnnotationProcessor)
+2018 十月 28 20:05:56,229  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterCreator)
+2018 十月 28 20:05:56,229  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterHolder)
+2018 十月 28 20:05:56,229  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.TextProvider)
+2018 十月 28 20:05:56,230  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.LocaleProvider)
+2018 十月 28 20:05:56,230  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.ActionProxyFactory)
+2018 十月 28 20:05:56,230  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ObjectTypeDeterminer)
+2018 十月 28 20:05:56,230  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.dispatcher.mapper.ActionMapper)
+2018 十月 28 20:05:56,231  INFO AbstractBeanSelectionProvider:46 - Choosing bean (jakarta) for (org.apache.struts2.dispatcher.multipart.MultiPartRequest)
+2018 十月 28 20:05:56,231  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.views.freemarker.FreemarkerManager)
+2018 十月 28 20:05:56,233  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.components.UrlRenderer)
+2018 十月 28 20:05:56,234  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.validator.ActionValidatorManager)
+2018 十月 28 20:05:56,234  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.ValueStackFactory)
+2018 十月 28 20:05:56,234  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionProvider)
+2018 十月 28 20:05:56,235  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionContextFactory)
+2018 十月 28 20:05:56,235  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.PatternMatcher)
+2018 十月 28 20:05:56,235  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.util.ContentTypeMatcher)
+2018 十月 28 20:05:56,235  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.dispatcher.StaticContentLoader)
+2018 十月 28 20:05:56,236  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.UnknownHandlerManager)
+2018 十月 28 20:05:56,236  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.views.util.UrlHelper)
+2018 十月 28 20:05:56,236  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.TextParser)
+2018 十月 28 20:05:56,238  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.dispatcher.DispatcherErrorHandler)
+2018 十月 28 20:05:56,238  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.security.ExcludedPatternsChecker)
+2018 十月 28 20:05:56,238  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.security.AcceptedPatternsChecker)
+2018 十月 28 20:05:56,277  INFO StrutsSpringObjectFactory:46 - Initializing Struts-Spring integration...
+2018 十月 28 20:05:56,277  INFO SpringObjectFactory:46 - Setting autowire strategy to name
+2018 十月 28 20:05:56,278  INFO StrutsSpringObjectFactory:46 - ... initialized Struts-Spring integration successfully
+2018 十月 28 20:06:38,852  INFO ContextLoader:272 - Root WebApplicationContext: initialization started
+2018 十月 28 20:06:39,117  INFO XmlWebApplicationContext:500 - Refreshing Root WebApplicationContext: startup date [Sun Oct 28 20:06:39 CST 2018]; root of context hierarchy
+2018 十月 28 20:06:39,254  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [com/config/applicationContext.xml]
+2018 十月 28 20:06:40,179  INFO PropertyPlaceholderConfigurer:177 - Loading properties file from class path resource [com/config/jdbc.properties]
+2018 十月 28 20:06:40,284  INFO DefaultListableBeanFactory:581 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1e9a50a: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,baseDao,cardDaoImpl,customerDao,groupDao,orderDao,productDao,fansAction,marketAction,mobileBaseAction,weixinAction,fansDao,marketDao,mobileBaseDao,fansService,marketServiceImpl,weixinService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlSessionFactory,sqlSessionTemplate,transactionManager,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+2018 十月 28 20:06:40,447  INFO MLog:80 - MLog clients using log4j logging.
+2018 十月 28 20:06:40,527  INFO C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2018 十月 28 20:06:41,837  INFO AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1399y1frl37au2hxch|1e3d101, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.microsoft.sqlserver.jdbc.SQLServerDriver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1399y1frl37au2hxch|1e3d101, idleConnectionTestPeriod -> 600000, initialPoolSize -> 20, jdbcUrl -> , maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600000, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 500, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 20, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2018 十月 28 20:07:01,759  WARN ThreadPoolAsynchronousRunner:608 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@1335f7e -- APPARENT DEADLOCK!!! Creating emergency threads for unassigned pending tasks!
+2018 十月 28 20:07:01,765  WARN ThreadPoolAsynchronousRunner:624 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@1335f7e -- APPARENT DEADLOCK!!! Complete Status: 
+	Managed Threads: 3
+	Active Threads: 3
+	Active Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@17ffb28 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@14220b0 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@70202e (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0)
+	Pending Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@150beb2
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@17b791
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@11490a3
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@123c824
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@28f19e
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@eca83
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@111815d
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@4414b4
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1ab6dfa
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1c154a3
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@19bc657
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1faa5a9
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@922e8d
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@12e40d0
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1a14a8e
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@25eaea
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@161b2fb
+Pool thread stack traces:
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+
+
+2018 十月 28 20:13:53,329  INFO ContextLoader:272 - Root WebApplicationContext: initialization started
+2018 十月 28 20:13:53,593  INFO XmlWebApplicationContext:500 - Refreshing Root WebApplicationContext: startup date [Sun Oct 28 20:13:53 CST 2018]; root of context hierarchy
+2018 十月 28 20:13:53,770  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [com/config/applicationContext.xml]
+2018 十月 28 20:13:54,984  INFO PropertyPlaceholderConfigurer:177 - Loading properties file from class path resource [com/config/jdbc.properties]
+2018 十月 28 20:13:55,147  INFO DefaultListableBeanFactory:581 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@195e4df: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,baseDao,cardDaoImpl,customerDao,groupDao,orderDao,productDao,fansAction,marketAction,mobileBaseAction,weixinAction,fansDao,marketDao,mobileBaseDao,fansService,marketServiceImpl,weixinService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlSessionFactory,sqlSessionTemplate,transactionManager,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+2018 十月 28 20:13:55,395  INFO MLog:80 - MLog clients using log4j logging.
+2018 十月 28 20:13:55,497  INFO C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2018 十月 28 20:13:57,364  INFO AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1399y1fruetilzjw7q|268798, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.microsoft.sqlserver.jdbc.SQLServerDriver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1399y1fruetilzjw7q|268798, idleConnectionTestPeriod -> 600000, initialPoolSize -> 20, jdbcUrl -> , maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600000, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 500, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 20, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2018 十月 28 20:14:17,227  WARN ThreadPoolAsynchronousRunner:608 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@324438 -- APPARENT DEADLOCK!!! Creating emergency threads for unassigned pending tasks!
+2018 十月 28 20:14:17,233  WARN ThreadPoolAsynchronousRunner:624 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@324438 -- APPARENT DEADLOCK!!! Complete Status: 
+	Managed Threads: 3
+	Active Threads: 3
+	Active Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1dec3f (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@814530 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@e581c2 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1)
+	Pending Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1a9fd8e
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@145974f
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1d104d0
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1930d3d
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@14a28ce
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1bd1406
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@6db69b
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@ef859d
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@12d467f
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@16f657b
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@6fa972
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@dd86df
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1c1da84
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1f12aa7
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@277983
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@19a92d1
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@11d15b6
+Pool thread stack traces:
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+
+
+2018 十月 28 20:17:35,792  INFO ContextLoader:272 - Root WebApplicationContext: initialization started
+2018 十月 28 20:17:36,027  INFO XmlWebApplicationContext:500 - Refreshing Root WebApplicationContext: startup date [Sun Oct 28 20:17:36 CST 2018]; root of context hierarchy
+2018 十月 28 20:17:36,184  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [com/config/applicationContext.xml]
+2018 十月 28 20:17:38,374  INFO PropertyPlaceholderConfigurer:177 - Loading properties file from class path resource [com/config/jdbc.properties]
+2018 十月 28 20:17:38,527  INFO DefaultListableBeanFactory:581 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@105e4e7: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,baseDao,cardDaoImpl,customerDao,groupDao,orderDao,productDao,fansAction,marketAction,mobileBaseAction,weixinAction,fansDao,marketDao,mobileBaseDao,fansService,marketServiceImpl,weixinService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlSessionFactory,sqlSessionTemplate,transactionManager,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+2018 十月 28 20:17:38,761  INFO MLog:80 - MLog clients using log4j logging.
+2018 十月 28 20:17:38,857  INFO C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2018 十月 28 20:17:40,910  INFO AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1399y1frz75y1fayoxy|541229, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.microsoft.sqlserver.jdbc.SQLServerDriver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1399y1frz75y1fayoxy|541229, idleConnectionTestPeriod -> 600000, initialPoolSize -> 20, jdbcUrl -> , maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600000, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 500, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 20, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2018 十月 28 20:18:00,817  WARN ThreadPoolAsynchronousRunner:608 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@101b67a -- APPARENT DEADLOCK!!! Creating emergency threads for unassigned pending tasks!
+2018 十月 28 20:18:00,823  WARN ThreadPoolAsynchronousRunner:624 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@101b67a -- APPARENT DEADLOCK!!! Complete Status: 
+	Managed Threads: 3
+	Active Threads: 3
+	Active Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1c884ab (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@17e228c (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@e464e (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0)
+	Pending Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@129d4f8
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@15cf9de
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@118740f
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@6bb8a3
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@26ea10
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@d0dd3d
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@6cd13c
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1cea92
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@6c350c
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@ec7df
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@640180
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@19ea0a7
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1456b23
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@7d060f
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@18c82a
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@fd48bb
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@b2082a
+Pool thread stack traces:
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+
+
+2018 十月 28 20:31:20,959  INFO ContextLoader:272 - Root WebApplicationContext: initialization started
+2018 十月 28 20:31:21,192  INFO XmlWebApplicationContext:500 - Refreshing Root WebApplicationContext: startup date [Sun Oct 28 20:31:21 CST 2018]; root of context hierarchy
+2018 十月 28 20:31:21,356  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [com/config/applicationContext.xml]
+2018 十月 28 20:31:22,461  INFO PropertyPlaceholderConfigurer:177 - Loading properties file from class path resource [com/config/jdbc.properties]
+2018 十月 28 20:31:22,633  INFO DefaultListableBeanFactory:581 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@23950: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,baseDao,cardDaoImpl,customerDao,groupDao,orderDao,productDao,fansAction,marketAction,mobileBaseAction,weixinAction,fansDao,marketDao,mobileBaseDao,fansService,marketServiceImpl,weixinService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlSessionFactory,sqlSessionTemplate,transactionManager,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+2018 十月 28 20:31:22,877  INFO MLog:80 - MLog clients using log4j logging.
+2018 十月 28 20:31:22,964  INFO C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2018 十月 28 20:31:24,596  INFO AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1399y1fsgv1sxvoy4f|257082, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.microsoft.sqlserver.jdbc.SQLServerDriver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1399y1fsgv1sxvoy4f|257082, idleConnectionTestPeriod -> 600000, initialPoolSize -> 20, jdbcUrl -> , maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600000, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 500, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 20, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2018 十月 28 20:31:44,487  WARN ThreadPoolAsynchronousRunner:608 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@129d4f8 -- APPARENT DEADLOCK!!! Creating emergency threads for unassigned pending tasks!
+2018 十月 28 20:31:44,493  WARN ThreadPoolAsynchronousRunner:624 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@129d4f8 -- APPARENT DEADLOCK!!! Complete Status: 
+	Managed Threads: 3
+	Active Threads: 3
+	Active Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@7d060f (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@18c82a (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@fd48bb (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2)
+	Pending Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@b2082a
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@362efe
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1474abb
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@17b6ad4
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1a2bf87
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1cc4e72
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@324438
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1cbaaf
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@243737
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1a52c2a
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@f68793
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@13f01f0
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1983433
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@18b2918
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@136efa7
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1afe177
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1fb80cf
+Pool thread stack traces:
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+
+
+2018 十月 28 20:31:53,635  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@7d060f -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2018 十月 28 20:31:53,635  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@fd48bb -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2018 十月 28 20:31:53,659 ERROR BaseExecutor:38 - Could not get a databaseId from dataSource
+java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:106)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:529)
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:128)
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseProductName(VendorDatabaseIdProvider.java:76)
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseName(VendorDatabaseIdProvider.java:61)
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseId(VendorDatabaseIdProvider.java:49)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:395)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:295)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1514)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1452)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:456)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:294)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:225)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:291)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:876)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:818)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:735)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:556)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:92)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:456)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:294)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:225)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:291)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:609)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:469)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:383)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:283)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:112)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4521)
+	at org.apache.catalina.core.StandardContext$1.call(StandardContext.java:5004)
+	at org.apache.catalina.core.StandardContext$1.call(StandardContext.java:4999)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1319)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:557)
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:477)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:525)
+	... 40 more
+2018 十月 28 20:31:53,635  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@18c82a -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+2018 十月 28 20:31:54,505  INFO ContextLoader:301 - Root WebApplicationContext: initialization completed in 33540 ms
+2018 十月 28 20:31:55,092  INFO XmlConfigurationProvider:46 - Parsing configuration file [struts-default.xml]
+2018 十月 28 20:31:55,287  INFO XmlConfigurationProvider:46 - Parsing configuration file [struts-plugin.xml]
+2018 十月 28 20:31:55,367  INFO XmlConfigurationProvider:46 - Parsing configuration file [com/config/struts.xml]
+2018 十月 28 20:31:55,373  INFO AbstractBeanSelectionProvider:46 - Choosing bean (spring) for (com.opensymphony.xwork2.ObjectFactory)
+2018 十月 28 20:31:55,373  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ActionFactory)
+2018 十月 28 20:31:55,374  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ResultFactory)
+2018 十月 28 20:31:55,374  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ConverterFactory)
+2018 十月 28 20:31:55,374  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.InterceptorFactory)
+2018 十月 28 20:31:55,375  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ValidatorFactory)
+2018 十月 28 20:31:55,375  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.UnknownHandlerFactory)
+2018 十月 28 20:31:55,375  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.FileManagerFactory)
+2018 十月 28 20:31:55,375  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.XWorkConverter)
+2018 十月 28 20:31:55,376  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.CollectionConverter)
+2018 十月 28 20:31:55,376  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.ArrayConverter)
+2018 十月 28 20:31:55,376  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.DateConverter)
+2018 十月 28 20:31:55,377  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.NumberConverter)
+2018 十月 28 20:31:55,377  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.StringConverter)
+2018 十月 28 20:31:55,377  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionPropertiesProcessor)
+2018 十月 28 20:31:55,378  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionFileProcessor)
+2018 十月 28 20:31:55,378  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionAnnotationProcessor)
+2018 十月 28 20:31:55,378  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterCreator)
+2018 十月 28 20:31:55,378  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterHolder)
+2018 十月 28 20:31:55,379  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.TextProvider)
+2018 十月 28 20:31:55,379  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.LocaleProvider)
+2018 十月 28 20:31:55,379  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.ActionProxyFactory)
+2018 十月 28 20:31:55,380  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ObjectTypeDeterminer)
+2018 十月 28 20:31:55,380  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.dispatcher.mapper.ActionMapper)
+2018 十月 28 20:31:55,381  INFO AbstractBeanSelectionProvider:46 - Choosing bean (jakarta) for (org.apache.struts2.dispatcher.multipart.MultiPartRequest)
+2018 十月 28 20:31:55,381  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.views.freemarker.FreemarkerManager)
+2018 十月 28 20:31:55,389  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.components.UrlRenderer)
+2018 十月 28 20:31:55,390  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.validator.ActionValidatorManager)
+2018 十月 28 20:31:55,390  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.ValueStackFactory)
+2018 十月 28 20:31:55,390  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionProvider)
+2018 十月 28 20:31:55,391  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionContextFactory)
+2018 十月 28 20:31:55,391  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.PatternMatcher)
+2018 十月 28 20:31:55,391  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.util.ContentTypeMatcher)
+2018 十月 28 20:31:55,391  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.dispatcher.StaticContentLoader)
+2018 十月 28 20:31:55,392  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.UnknownHandlerManager)
+2018 十月 28 20:31:55,392  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.views.util.UrlHelper)
+2018 十月 28 20:31:55,392  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.TextParser)
+2018 十月 28 20:31:55,393  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.dispatcher.DispatcherErrorHandler)
+2018 十月 28 20:31:55,393  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.security.ExcludedPatternsChecker)
+2018 十月 28 20:31:55,393  INFO AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.security.AcceptedPatternsChecker)
+2018 十月 28 20:31:55,429  INFO StrutsSpringObjectFactory:46 - Initializing Struts-Spring integration...
+2018 十月 28 20:31:55,430  INFO SpringObjectFactory:46 - Setting autowire strategy to name
+2018 十月 28 20:31:55,430  INFO StrutsSpringObjectFactory:46 - ... initialized Struts-Spring integration successfully
+2018 十月 28 20:32:13,564  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1cbaaf -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:13,566  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1a52c2a -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:13,565  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@17b6ad4 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:13,565  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@362efe -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:13,564  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1cc4e72 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:13,595  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@b2082a -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:13,595  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@243737 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:13,595  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1a2bf87 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:13,595  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1474abb -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:13,595  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@324438 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:42,576  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@13f01f0 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:42,580  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@18b2918 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:42,595  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1983433 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:42,600  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@f68793 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:42,602  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@136efa7 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:42,606  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1afe177 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:32:42,617  WARN BasicResourcePool:1841 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1fb80cf -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+java.sql.SQLException: No suitable driver
+	at java.sql.DriverManager.getDriver(DriverManager.java:278)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.driver(DriverManagerDataSource.java:223)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPerTaskAsynchronousRunner$TaskThread.run(ThreadPerTaskAsynchronousRunner.java:255)
+2018 十月 28 20:52:57,778  INFO ContextLoader:272 - Root WebApplicationContext: initialization started
+2018 十月 28 20:52:58,044  INFO XmlWebApplicationContext:500 - Refreshing Root WebApplicationContext: startup date [Sun Oct 28 20:52:58 CST 2018]; root of context hierarchy
+2018 十月 28 20:52:58,228  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [com/config/applicationContext.xml]
+2018 十月 28 20:53:00,134  INFO PropertyPlaceholderConfigurer:177 - Loading properties file from class path resource [com/config/jdbc.properties]
+2018 十月 28 20:53:00,311  INFO DefaultListableBeanFactory:581 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@e61d6c: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,baseDao,cardDaoImpl,customerDao,groupDao,orderDao,productDao,fansAction,marketAction,mobileBaseAction,weixinAction,fansDao,marketDao,mobileBaseDao,fansService,marketServiceImpl,weixinService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sqlSessionFactory,sqlSessionTemplate,transactionManager,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+2018 十月 28 20:53:00,558  INFO MLog:80 - MLog clients using log4j logging.
+2018 十月 28 20:53:00,662  INFO C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2018 十月 28 20:53:02,920  INFO AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1399y1ft8ocy1bd6wjd|e80416, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.microsoft.sqlserver.jdbc.SQLServerDriver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1399y1ft8ocy1bd6wjd|e80416, idleConnectionTestPeriod -> 600000, initialPoolSize -> 20, jdbcUrl -> , maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600000, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 500, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 20, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2018 十月 28 20:53:22,808  WARN ThreadPoolAsynchronousRunner:608 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@11d15b6 -- APPARENT DEADLOCK!!! Creating emergency threads for unassigned pending tasks!
+2018 十月 28 20:53:22,816  WARN ThreadPoolAsynchronousRunner:624 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@11d15b6 -- APPARENT DEADLOCK!!! Complete Status: 
+	Managed Threads: 3
+	Active Threads: 3
+	Active Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@6ea769 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@b106b9 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@307de3 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1)
+	Pending Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@198fdad
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1367702
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@bf5210
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@a49be5
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@f7164a
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1d87bbf
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1a472fd
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1795ea2
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@133f2f3
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1936059
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@9a99d2
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1e8c706
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1627276
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@48a7d7
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@33225
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1d158b1
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@115d9b4
+Pool thread stack traces:
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+
+

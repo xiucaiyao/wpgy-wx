@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="order">
+	<resultMap id="orderMap" type="orderBean" >
+		<id column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+		<result column="ORDER_NO" property="orderNo" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+		<result column="ORDER_DATE" property="orderDate" jdbcType="TIMESTAMP" />
+		<result column="SEND_DATE" property="sendDate" jdbcType="TIMESTAMP" />
+		<result column="SEND_MAN" property="sendMan" jdbcType="VARCHAR" />
+		<result column="DELIVER_MAN" property="deliverMan" jdbcType="DECIMAL" />
+		<result column="RECEIVE_MAN" property="receiveMan" jdbcType="DECIMAL" />
+		<result column="ORDER_STATE" property="orderState" jdbcType="DECIMAL" />
+		<result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+		<result column="CITY" property="city" jdbcType="VARCHAR" />
+		<result column="COUNTY" property="county" jdbcType="TIMESTAMP" />
+		<result column="TOWN" property="town" jdbcType="VARCHAR" />
+		<result column="ADDRESS" property="address" jdbcType="INTEGER" />
+		<result column="OWN_RECEIVE_PLACE_ID" property="ownReceivePlaceId" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="LINE" property="line" jdbcType="VARCHAR" />
+		<result column="LINE_ORDER" property="lineOrder" jdbcType="INTEGER" />
+		<result column="PHONE" property="phone" jdbcType="VARCHAR" />
+		<result column="CUSTOMER_TYPE" property="customerType" jdbcType="VARCHAR" />
+		<result column="GROUP_ID" property="groupId" jdbcType="VARCHAR" />
+		<result column="GROUP_NUMBER" property="groupNumber" jdbcType="INTEGER" />
+		<result column="ORDER_PACKING_TYPE" property="orderPackingType" jdbcType="VARCHAR" />
+		<result column="ORDER_PACKING_PRICE" property="orderPackingPrice" jdbcType="DECIMAL" />
+		<result column="ORDER_MONEY" property="orderMoney" jdbcType="DECIMAL" />
+		<result column="ORDER_TYPE" property="orderType" jdbcType="VARCHAR" />
+		<result column="PAY_TYPE" property="payType" jdbcType="VARCHAR" />
+		<result column="SEND_TYPE" property="sendType" jdbcType="VARCHAR" />
+		<result column="SEND_MONEY" property="sendMoney" jdbcType="DECIMAL" />
+		<result column="ORDER_SOURCE" property="orderSource" jdbcType="VARCHAR" />
+		<result column="MEMO" property="memo" jdbcType="VARCHAR" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<resultMap id="orderDetailMap" type="orderDetailBean" >
+		<id column="ORDER_DETAIL_ID" property="orderDetailId" jdbcType="VARCHAR" />
+		<result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+		<result column="SERIAL" property="serial" jdbcType="VARCHAR" />
+		<result column="SPEC" property="spec" jdbcType="VARCHAR" />
+		<result column="PRICE" property="price" jdbcType="DECIMAL" />
+		<result column="ORDER_NUM" property="orderNum" jdbcType="DECIMAL" />
+		<result column="SEND_NUM" property="sendNum" jdbcType="DECIMAL" />
+		<result column="RECEIVE_NUM" property="receiveNum" jdbcType="DECIMAL" />
+		<result column="SEND_MONEY" property="sendMoney" jdbcType="DECIMAL" />
+		<result column="LACK_MONEY" property="lackMoney" jdbcType="DECIMAL" />
+		<result column="BACK_MONEY" property="backMoney" jdbcType="DECIMAL" />
+		<result column="REAL_MONEY" property="realMoney" jdbcType="DECIMAL" />
+		<result column="MACHINING_MEMO" property="machiningMemo" jdbcType="VARCHAR" />
+		<result column="PRODUCT_NAME" property="productName" jdbcType="VARCHAR" />
+		<result column="MEMO" property="memo" jdbcType="VARCHAR" />
+		<result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="NAME" property="productBean.name" jdbcType="VARCHAR" />
+		<result column="SMALLPIC" property="productBean.smallpic" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 查询订单信息 -->
+	<select id="queryOrder" parameterType="orderBean" resultMap="orderMap">
+		select ORDER_ID, ORDER_NO, CUSTOMER_ID, ORDER_DATE, SEND_DATE, SEND_MAN, DELIVER_MAN, RECEIVE_MAN, ORDER_STATE, PROVINCE, CITY, COUNTY, TOWN, ADDRESS, OWN_RECEIVE_PLACE_ID, NAME, LINE, LINE_ORDER, PHONE, CUSTOMER_TYPE, GROUP_ID, GROUP_NUMBER, ORDER_PACKING_TYPE, ORDER_PACKING_PRICE, ORDER_MONEY, ORDER_TYPE, SEND_TYPE, SEND_MONEY, PAY_TYPE, ORDER_SOURCE, MEMO, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME
+			from TB_ORDER
+			<trim prefix="where" prefixOverrides="and|or">
+		    	<if test="orderId != null and orderId != ''">
+		        	and ORDER_ID=#{orderId}
+		      	</if>
+		    	<if test="customerId != null and customerId != ''">
+		        	and CUSTOMER_ID=#{customerId}
+		      	</if>
+		      	<if test="orderState != null and orderState != ''">
+		        	and ORDER_STATE=#{orderState}
+		      	</if>
+		      	<if test="customerType != null and customerType != ''">
+		        	and CUSTOMER_TYPE=#{customerType}
+		      	</if>
+			</trim>
+			order by CREATE_TIME desc
+	</select>
+
+	<!-- 插入订单信息 -->
+	<insert id="insertOrder" parameterType="orderBean">
+		insert into TB_ORDER (ORDER_ID, ORDER_NO, CUSTOMER_ID, ORDER_DATE, SEND_DATE, SEND_MAN, DELIVER_MAN, RECEIVE_MAN, ORDER_STATE, PROVINCE, CITY, COUNTY, TOWN, ADDRESS, LINE, LINE_ORDER, PHONE, OWN_RECEIVE_PLACE_ID, NAME, CUSTOMER_TYPE, GROUP_ID, GROUP_NUMBER, ORDER_PACKING_TYPE, ORDER_PACKING_PRICE, ORDER_MONEY, ORDER_TYPE, SEND_TYPE, SEND_MONEY, ORDER_SOURCE, MEMO, CREATE_USER, CREATE_TIME)
+			values (#{orderId}, #{orderNo}, #{customerId}, #{orderDate}, #{sendDate}, #{sendMan}, #{deliverMan}, #{receiveMan}, #{orderState}, #{province}, #{city}, #{county}, #{town}, #{address}, #{line}, #{lineOrder}, #{phone}, #{ownReceivePlaceId}, #{name}, #{customerType}, #{groupId}, #{groupNumber}, #{orderPackingType}, #{orderPackingPrice}, #{orderMoney}, #{orderType}, #{sendType}, #{sendMoney}, #{orderSource}, #{memo}, #{createUser}, #{createTime})
+	</insert>
+	
+	<!-- 修改订单状态 -->
+	<update id="updateOrderState" parameterType="orderBean">
+		update TB_ORDER set ORDER_STATE=#{orderState}, ORDER_DATE=#{orderDate}, PAY_TYPE=#{payType}, UPDATE_USER=#{updateUser}, UPDATE_TIME=#{updateTime} where ORDER_ID=#{orderId}
+	</update>
+
+	<!-- 查询订单详细 -->
+	<select id="queryOrderDetail" parameterType="orderDetailBean" resultMap="orderDetailMap">
+		select ORDER_DETAIL_ID, ORDER_ID, TB_ORDER_DETAIL.SERIAL, SPEC, PRICE, ORDER_NUM, SEND_NUM, RECEIVE_NUM, SEND_MONEY, LACK_MONEY, BACK_MONEY, REAL_MONEY, MACHINING_MEMO, PRODUCT_NAME, IS_GROUP_PRODUCT, TB_ORDER_DETAIL.MEMO, UPDATE_USER, UPDATE_TIME, TB_PRODUCT.NAME, SMALLPIC
+			from TB_ORDER_DETAIL 
+			left join TB_PRODUCT on TB_ORDER_DETAIL.SERIAL=TB_PRODUCT.SERIAL
+			left join TB_PRODUCT_INFO on TB_PRODUCT.SERIAL=TB_PRODUCT_INFO.SERIAL
+			<trim prefix="where" prefixOverrides="and|or">
+		    	<if test="orderId != null and orderId != ''">
+		        	and ORDER_ID=#{orderId}
+		      	</if>
+			</trim>
+	</select>
+
+	<!-- 新增订单详细 -->
+	<insert id="insertOrderDetail" parameterType="orderDetailBean">
+		insert into TB_ORDER_DETAIL (ORDER_DETAIL_ID, ORDER_ID, SERIAL, SPEC, PRICE, ORDER_NUM, SEND_NUM, RECEIVE_NUM, SEND_MONEY, LACK_MONEY, BACK_MONEY, REAL_MONEY, MACHINING_MEMO, PRODUCT_NAME, IS_GROUP_PRODUCT, MEMO, UPDATE_USER, UPDATE_TIME)
+			values (#{orderDetailId}, #{orderId}, #{serial}, #{spec}, #{price}, #{orderNum}, #{sendNum}, #{receiveNum}, #{sendMoney}, #{lackMoney}, #{backMoney}, #{realMoney}, #{machiningMemo}, #{productName}, #{isGroupProduct}, #{memo}, #{updateUser}, #{updateTime})
+	</insert>
+	
+	<!-- 查询支付明细  -->
+	<select id="queryOrderPayDetail" parameterType="java.lang.String" resultType="orderPayDetailBean">
+		select ORDER_PAY_DETAIL_ID as orderPayDetailId, ORDER_ID as orderId, VOUCHER_NO as voucherNo, 
+			VOUCHER_TYPE as voucherType, REAL_MONEY as realMoney, MEMO as memo, CREATE_USER as createUser, 
+			CREATE_TIME as createTime, UPDATE_USER as updateUser, UPDATE_TIME as updateTime
+			from TB_ORDER_PAY_DETAIL
+			where ORDER_ID=#{value}
+	</select>
+
+	<!-- 新增支付明细 -->
+	<insert id="insertOrderPayDetail" parameterType="orderPayDetailBean">
+		insert into TB_ORDER_PAY_DETAIL (ORDER_PAY_DETAIL_ID, ORDER_ID, VOUCHER_NO, VOUCHER_TYPE, REAL_MONEY, MEMO, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME)
+			values (#{orderPayDetailId}, #{orderId}, #{voucherNo}, #{voucherType}, #{realMoney}, #{memo}, #{createUser}, #{createTime}, #{updateUser}, #{updateTime})
+	</insert>
+
+	<!-- 查询充值消费记录 -->
+	<select id="queryCardRecord" parameterType="cardRecordBean" resultType="cardRecordBean">
+		select CARD_RECORD_ID as cardRecordId, CARD_TYPE as cardType, CARD_NO as cardNo, RECORD_DATE as recordDate, 
+			RECORD_TYPE as recordType, IN_OUT_MONEY as inOutMoney, GIVE_MONEY as giveMoney,
+			MEMO as memo, CREATE_USER as createUser, CREATE_TIME as createTime, UPDATE_USER as updateUser, UPDATE_TIME as updateTime
+			from TB_CARD_RECORD
+			<trim prefix="where" prefixOverrides="and|or">
+		    	<if test="cardType != null and cardType != ''">
+		        	and CARD_TYPE=#{cardType}
+		      	</if>
+		    	<if test="cardNo != null and cardNo != ''">
+		        	and CARD_NO=#{cardNo}
+		      	</if>
+		    	<if test="recordType != null and recordType != ''">
+		        	and RECORD_TYPE=#{recordType}
+		      	</if>
+			</trim>
+	</select>
+
+	<!-- 分页查询充值消费记录 -->
+	<select id="queryCardRecordForPage" parameterType="cardRecordQueryBean" resultType="cardRecordBean">
+		select top ${pageItems} CARD_RECORD_ID as cardRecordId, CARD_TYPE as cardType, CARD_NO as cardNo, RECORD_DATE as recordDate, 
+			RECORD_TYPE as recordType, IN_OUT_MONEY as inOutMoney, GIVE_MONEY as giveMoney,
+			MEMO as memo, CREATE_USER as createUser, CREATE_TIME as createTime, UPDATE_USER as updateUser, UPDATE_TIME as updateTime
+			from TB_CARD_RECORD
+			where CARD_RECORD_ID not in
+			(select top ${startItem} TB_CARD_RECORD.CARD_RECORD_ID from TB_CARD_RECORD 
+			<trim prefix="where" prefixOverrides="and|or">
+		    	<if test="cardNo != null and cardNo != '' and groupCardNo != null and groupCardNo != ''">
+		        	and (CARD_NO=#{cardNo} or CARD_NO=#{groupCardNo})
+		      	</if>
+		    	<if test="cardNo != null and cardNo != '' and (groupCardNo == null or groupCardNo == '')">
+		        	and CARD_NO=#{cardNo}
+		      	</if>
+		    	<if test="(cardNo == null or cardNo == '') and groupCardNo != null and groupCardNo != ''">
+		        	and CARD_NO=#{groupCardNo}
+		      	</if>
+		    	<if test="recordType != null and recordType != ''">
+		        	and RECORD_TYPE=#{recordType}
+		      	</if>
+			</trim>
+			order by RECORD_DATE desc
+			)
+	    	<if test="cardNo != null and cardNo != '' and groupCardNo != null and groupCardNo != ''">
+	        	and (CARD_NO=#{cardNo} or CARD_NO=#{groupCardNo})
+	      	</if>
+	    	<if test="cardNo != null and cardNo != '' and (groupCardNo == null or groupCardNo == '')">
+	        	and CARD_NO=#{cardNo}
+	      	</if>
+	    	<if test="(cardNo == null or cardNo == '') and groupCardNo != null and groupCardNo != ''">
+	        	and CARD_NO=#{groupCardNo}
+	      	</if>
+	    	<if test="recordType != null and recordType != ''">
+	        	and RECORD_TYPE=#{recordType}
+	      	</if>
+	      	order by RECORD_DATE desc
+	</select>
+	
+	<!-- 查询充值消费记录数 -->
+	<select id="queryCardRecordCount" parameterType="cardRecordQueryBean" resultType="java.lang.Integer">
+		select count(CARD_RECORD_ID) from TB_CARD_RECORD
+			<trim prefix="where" prefixOverrides="and|or">
+		    	<if test="cardNo != null and cardNo != '' and groupCardNo != null and groupCardNo != ''">
+		        	and (CARD_NO=#{cardNo} or CARD_NO=#{groupCardNo})
+		      	</if>
+		    	<if test="cardNo != null and cardNo != '' and (groupCardNo == null or groupCardNo == '')">
+		        	and CARD_NO=#{cardNo}
+		      	</if>
+		    	<if test="(cardNo == null or cardNo == '') and groupCardNo != null and groupCardNo != ''">
+		        	and CARD_NO=#{groupCardNo}
+		      	</if>
+		    	<if test="recordType != null and recordType != ''">
+		        	and RECORD_TYPE=#{recordType}
+		      	</if>
+			</trim>
+	</select>
+
+	<!-- 新增充值消费记录 -->
+	<insert id="insertCardRecord" parameterType="cardRecordBean">
+		insert into TB_CARD_RECORD (CARD_RECORD_ID, CARD_TYPE, CARD_NO, RECORD_DATE, RECORD_TYPE, IN_OUT_MONEY, GIVE_MONEY, MEMO, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME)
+			values (#{cardRecordId}, #{cardType}, #{cardNo}, #{recordDate}, #{recordType}, #{inOutMoney}, #{giveMoney}, #{memo}, #{createUser}, #{createTime}, #{updateUser}, #{updateTime})
+	</insert>
+	
+	<!-- 查询第三方交易平台记录根据系统支付订单号 -->
+	<select id="queryPayTradeByOutTradeNo" parameterType="java.lang.String" resultType="payTradeBean">
+		select PAY_TRADE_ID as payTradeId, CARD_RECORD_ID as cardRecordId, OUT_TRADE_NO as outTradeNo, TRADE_NO as tradeNo, 
+			LOGIN_NAME as loginName, CARD_NO as cardNo, BEGIN_PAY_TIME as beginPayTime, END_PAY_TIME as endPayTime, 
+			PAY_MONEY as payMoney, PAY_STATUS as payStatus, PAY_RESULT as payResult, CUSTOMER_NAME as customerName, MEMO as memo, CREATE_TIME as createTime
+			from TB_PAY_TRADE where PAY_TRADE_ID=#{value}
+	</select>
+	
+	<!-- 查询第三方交易平台记录根据订单号 -->
+	<select id="queryPayTradeByOrderId" parameterType="java.lang.String" resultType="payTradeBean">
+		select PAY_TRADE_ID as payTradeId, CARD_RECORD_ID as cardRecordId, OUT_TRADE_NO as outTradeNo, TRADE_NO as tradeNo, 
+			LOGIN_NAME as loginName, CARD_NO as cardNo, BEGIN_PAY_TIME as beginPayTime, END_PAY_TIME as endPayTime, 
+			PAY_MONEY as payMoney, PAY_STATUS as payStatus, PAY_RESULT as payResult, CUSTOMER_NAME as customerName, MEMO as memo, CREATE_TIME as createTime
+			from TB_PAY_TRADE where OUT_TRADE_NO=#{value}
+	</select>
+	
+	<!-- 新增第三方交易平台记录 -->
+	<insert id="insertPayTrade" parameterType="payTradeBean" keyProperty="payTradeId">
+		insert into TB_PAY_TRADE (PAY_TRADE_ID, CARD_RECORD_ID, OUT_TRADE_NO, TRADE_NO, LOGIN_NAME, CARD_NO, BEGIN_PAY_TIME , END_PAY_TIME, PAY_MONEY, PAY_STATUS, PAY_RESULT, CUSTOMER_NAME, MEMO, CREATE_TIME)
+			values (#{payTradeId}, #{cardRecordId}, #{outTradeNo}, #{tradeNo}, #{loginName}, #{cardNo}, #{beginPayTime}, #{endPayTime}, #{payMoney}, #{payStatus}, #{payResult}, #{customerName}, #{memo}, #{createTime})
+	</insert>
+	
+	<!-- 修改第三方交易平台记录 -->
+	<update id="updatePayTrade" parameterType="payTradeBean">
+		update TB_PAY_TRADE 
+		<set>
+			<if test="tradeNo != null and tradeNo != ''">
+		    	TRADE_NO=#{tradeNo},
+			</if>
+			<if test="cardRecordId != null and cardRecordId != ''">
+		    	CARD_RECORD_ID=#{cardRecordId}, 
+			</if>
+			<if test="endPayTime != null">
+		    	END_PAY_TIME=#{endPayTime}, 
+			</if>
+			<if test="payStatus != null">
+		    	PAY_STATUS=#{payStatus},
+			</if>
+			<if test="payResult != null">
+		    	PAY_RESULT=#{payResult},
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+		    	CARD_NO=#{cardNo},
+			</if>
+			<if test="memo != null and memo != ''">
+		    	MEMO=#{memo},
+			</if>
+		</set>
+			where PAY_TRADE_ID=#{payTradeId} 
+			<if test="cardNo != null and cardNo != ''">
+		    	and CARD_NO=#{cardNo}
+			</if>
+	</update>
+	
+	<!-- 修改第三方交易平台记录状态 -->
+	<update id="updatePayTradeStatus" parameterType="payTradeBean">
+		update TB_PAY_TRADE set OUT_TRADE_NO=#{outTradeNo}, PAY_STATUS=#{payStatus}, MEMO=#{memo},
+			where PAY_TRADE_ID=#{payTradeId} 
+	</update>
+	
+	<!-- 查询商品券信息记录 -->
+	<select id="queryVoucher" parameterType="java.lang.String" resultType="voucherBean">
+		select VOUCHER_ID as voucherId, VOUCHER_NO as voucherNo, VOUCHER_TYPE as voucherType, PAR_VALUE as parValue,
+			SALE_PRICE as salePrice, RECHANGE_PASSWORD as rechangePassword, STATE as state, SALE_DATE as saleDate,
+			RECHANGE_DATE as rechangeDate, IS_GIVE as isGive, RECHARGE_CUSTOMER_ID as rechargeCustomerId, MEMO as memo, DELTE_FLAG as delteFlag, 
+			CREATE_USER as createUser, CREATE_TIME as createTime, UPDATE_USER as updateUser, UPDATE_TIME as updateTime,
+			CARD_TYPE_ID as cardTypeId, BUY_MAN as buyMan
+			from TB_VOUCHER where VOUCHER_NO=#{value}
+	</select>
+	
+	<!-- 查询商品券信息根据ID -->
+	<select id="queryVoucherById" parameterType="java.lang.String" resultType="voucherBean">
+		select VOUCHER_ID as voucherId, VOUCHER_NO as voucherNo, VOUCHER_TYPE as voucherType, PAR_VALUE as parValue,
+			SALE_PRICE as salePrice, RECHANGE_PASSWORD as rechangePassword, STATE as state, SALE_DATE as saleDate,
+			RECHANGE_DATE as rechangeDate, IS_GIVE as isGive, RECHARGE_CUSTOMER_ID as rechargeCustomerId, MEMO as memo, DELTE_FLAG as delteFlag, 
+			CREATE_USER as createUser, CREATE_TIME as createTime, UPDATE_USER as updateUser, UPDATE_TIME as updateTime,
+			CARD_TYPE_ID as cardTypeId, BUY_MAN as buyMan
+			from TB_VOUCHER where VOUCHER_ID=#{value}
+	</select>
+	
+	<!-- 查询包装类型价格信息记录 -->
+	<select id="queryPackagePrice" resultType="java.util.Map" parameterType="java.lang.String">
+		select PACKAGE_PRICE_ID, NAME, PRICE from TB_PACKAGE_PRICE 
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="_parameter != null and _parameter != ''">
+	        	and PACKAGE_PRICE_ID=#{value}
+	      	</if>
+		</trim>
+	</select>
+	
+	<!-- 分页查询订单信息 -->
+	<select id="queryOrderForPage" parameterType="orderQueryBean" resultMap="orderMap">
+		select top ${pageItems} ORDER_ID, ORDER_NO, CUSTOMER_ID, ORDER_DATE, SEND_DATE, SEND_MAN, DELIVER_MAN, RECEIVE_MAN, ORDER_STATE, PROVINCE, CITY, COUNTY, TOWN, ADDRESS, LINE, LINE_ORDER, PHONE, CUSTOMER_TYPE, GROUP_ID, GROUP_NUMBER, ORDER_PACKING_TYPE, ORDER_PACKING_PRICE, ORDER_MONEY, ORDER_TYPE, SEND_TYPE, SEND_MONEY, MEMO, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME
+			from TB_ORDER
+			where ORDER_ID not in 
+			(select top ${startItem} TB_ORDER.ORDER_ID from TB_ORDER 
+			<trim prefix="where" prefixOverrides="and|or">
+		    	<if test="orderId != null and orderId != ''">
+		        	and ORDER_ID=#{orderId}
+		      	</if>
+		    	<if test="customerId != null and customerId != ''">
+		        	and CUSTOMER_ID=#{customerId}
+		      	</if>
+		      	<if test="orderState != null and orderState != ''">
+		        	and ORDER_STATE=#{orderState}
+		      	</if>
+		      	<if test='orderState2 == "1"'>
+		        	and (ORDER_STATE='初始' or ORDER_STATE='送货' or ORDER_STATE='汇总')
+		      	</if>
+		      	<if test='orderState2 == "2"'>
+		        	and ORDER_STATE='未支付'
+		      	</if>
+		      	<if test='orderState2 == "3"'>
+		        	and (ORDER_STATE='收货' or ORDER_STATE='审核')
+		      	</if>
+		      	<if test="startTime != null and startTime != ''">
+		        	<![CDATA[ and CREATE_TIME >= #{startTime} ]]>
+		      	</if>
+		      	<if test="endTime != null and endTime != ''">
+		        	<![CDATA[ and CREATE_TIME <= #{endTime} ]]>
+		      	</if>
+			</trim>
+			order by ORDER_DATE desc
+			)
+	    	<if test="orderId != null and orderId != ''">
+	        	and ORDER_ID=#{orderId}
+	      	</if>
+	    	<if test="customerId != null and customerId != ''">
+	        	and CUSTOMER_ID=#{customerId}
+	      	</if>
+	      	<if test="orderState != null and orderState != ''">
+	        	and ORDER_STATE=#{orderState}
+	      	</if>
+	      	<if test='orderState2 == "1"'>
+	        	and (ORDER_STATE='初始' or ORDER_STATE='送货' or ORDER_STATE='汇总')
+	      	</if>
+	      	<if test='orderState2 == "2"'>
+	        	and ORDER_STATE='未支付'
+	      	</if>
+	      	<if test='orderState2 == "3"'>
+	        	and (ORDER_STATE='收货' or ORDER_STATE='审核')
+	      	</if>
+	      	<if test="startTime != null and startTime != ''">
+	        	<![CDATA[ and CREATE_TIME >= #{startTime} ]]>
+	      	</if>
+	      	<if test="endTime != null and endTime != ''">
+	        	<![CDATA[ and CREATE_TIME <= #{endTime} ]]>
+	      	</if>
+	      	order by ORDER_DATE desc
+	</select>
+	
+	<!-- 查询订单数量 -->
+	<select id="queryOrderCount" parameterType="orderQueryBean" resultType="java.lang.Integer">
+		select count(TB_ORDER.ORDER_ID) from TB_ORDER 
+			<trim prefix="where" prefixOverrides="and|or">
+		    	<if test="orderId != null and orderId != ''">
+		        	and ORDER_ID=#{orderId}
+		      	</if>
+		    	<if test="customerId != null and customerId != ''">
+		        	and CUSTOMER_ID=#{customerId}
+		      	</if>
+		      	<if test="orderState != null and orderState != ''">
+		        	and ORDER_STATE=#{orderState}
+		      	</if>
+		      	<if test="startTime != null and startTime != ''">
+	        		<![CDATA[ and CREATE_TIME >= #{startTime} ]]>
+		      	</if>
+		      	<if test="endTime != null and endTime != ''">
+		        	<![CDATA[ and CREATE_TIME <= #{endTime} ]]>
+		      	</if>
+			</trim>
+	</select>
+	
+	<!-- 查询自提点信息 -->
+	<select id="queryOwnReceivePlace" resultType="ownReceivePlaceBean">
+		select OWN_RECEIVE_PLACE_ID as ownReceivePlaceId,  NAME as name,  PROVINCE as province,  
+			CITY as city,  COUNTY as county,  TOWN as town,  DETAIL_ADDRESS as detailAddress,  LINKMAN as linkman,  
+			LINKMAN_TEL as linkmanTel,  LINE as line, LINE_ORDER as lineOrder, MEMO as memo from TB_OWN_RECEIVE_PLACE order by LINE_ORDER
+	</select>
+	
+	<!-- 查询自提点信息 -->
+	<select id="queryOwnReceivePlaceById" resultType="ownReceivePlaceBean" parameterType="java.lang.String">
+		select OWN_RECEIVE_PLACE_ID as ownReceivePlaceId,  NAME as name,  PROVINCE as province,  
+			CITY as city,  COUNTY as county,  TOWN as town,  DETAIL_ADDRESS as detailAddress,  LINKMAN as linkman,  
+			LINKMAN_TEL as linkmanTel,  LINE as line, LINE_ORDER as lineOrder,  MEMO as memo from TB_OWN_RECEIVE_PLACE
+			where OWN_RECEIVE_PLACE_ID=#{value}
+	</select>
+	
+	<!-- 删除订单产品信息 -->
+	<delete id="deleteOrderDetail" parameterType="java.lang.String">
+	    delete from TB_ORDER_DETAIL where ORDER_ID = #{value} 
+	</delete>
+	
+	<!-- 删除订单信息 -->
+	<delete id="deleteOrder" parameterType="java.lang.String">
+	    delete from TB_ORDER where ORDER_ID = #{value} 
+	</delete>
+	
+	<!-- 修改订单日期 价格等信息 -->
+	<update id="updateOrderInfo">
+	    update TB_ORDER set SEND_DATE=#{sendDate}, ORDER_MONEY=#{orderMoney}, UPDATE_USER=#{updateUser}, UPDATE_TIME=#{updateTime} 
+	    	where ORDER_ID=#{orderId}
+	</update>
+</mapper>
