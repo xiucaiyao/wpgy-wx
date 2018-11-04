@@ -19,7 +19,7 @@ var app = app || {};
 		 * POST
 		 * 用户名：userName
 		 * 登录密码：password
-		 * 菜场用户信息登录
+		 * 用户信息登录
 		 */
 		app.api.login = app.Config.contextPath + "/fans.action";
 		
@@ -46,12 +46,12 @@ var app = app || {};
 		 * 搜索内容：productQueryBean.searchKeywords
 		 * 当前页数：productQueryBean.currentPage
 		 * 产品类型：productQueryBean.productType
-		 * 分页查询菜场用户产品信息列表
+		 * 分页查询用户产品信息列表
 		 */
 		app.api.queryMarketProduct = app.Config.contextPath + "/market!queryMarketProduct.action"; 
 		
 		/**
-		 * 查询菜场用户产品分类信息列表
+		 * 查询用户产品分类信息列表
 		 */
 		app.api.queryMarketProductType = app.Config.contextPath + "/market!queryMarketProductType.action"; 
 		
@@ -59,7 +59,7 @@ var app = app || {};
 		 * POST
 		 * 编码：productQueryBean.serial(必须)
 		 * 规格：productQueryBean.productSpec(必须)
-		 * 查询菜场用户产品详细信息
+		 * 查询用户产品详细信息
 		 */
 		app.api.productDetailBySerial = app.Config.contextPath + "/market!productDetailBySerial.action";
 		
@@ -110,7 +110,7 @@ var app = app || {};
 		/***
 		 * POST
 		 * 详细查看后端（MobileShoppingCartBean/CustomerOrderBean数据结构）
-		 * 增加菜摊用户订单
+		 * 增加用户订单
 		 */
 		app.api.generateMarketOrder = app.Config.contextPath + "/market!generateMarketOrder.action";
 		
@@ -141,9 +141,9 @@ var app = app || {};
 		
 		app.api.registSuccessMessagePage = app.Config.contextPath + "/fans!gotoRegistSuccessMessage.action"; //注册成功后跳入成功信息提示页面
 		
-		app.api.marketIndexPage = app.Config.contextPath + "/market!pageJump.action?pageName=marketIndex"; // 进入菜场用户首页
+		app.api.marketIndexPage = app.Config.contextPath + "/market!pageJump.action?pageName=marketIndex"; // 进入用户首页
 		
-		app.api.dishDetailsPage = app.Config.contextPath + "/market!pageJump.action?pageName=dishDetails"; // 菜品详细页面
+		app.api.dishDetailsPage = app.Config.contextPath + "/market!pageJump.action?pageName=dishDetails"; // 详细页面
 		
 		app.api.shopCarPage = app.Config.contextPath + "/market!pageJump.action?pageName=shopCar"; // 进入购物车页面
 		

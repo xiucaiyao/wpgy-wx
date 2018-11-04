@@ -13,6 +13,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.biz.vo.CustomerOrderBean;
+import com.biz.vo.OrderQueryBean;
+import com.biz.vo.ProductQueryBean;
+import com.biz.vo.ReturnResultBean;
 import com.mobile.constants.WeixinConstants;
 import com.mobile.po.wx.WeixinRefundApplyBean;
 import com.mobile.service.MarketService;
@@ -22,15 +26,11 @@ import com.mobile.vo.wx.WechatPayDto;
 import com.wechat.utils.GetWxOrderno;
 import com.wechat.utils.RequestHandler;
 import com.wechat.utils.Sha1Util;
-import com.yu.vo.CustomerOrderBean;
-import com.yu.vo.OrderQueryBean;
-import com.yu.vo.ProductQueryBean;
-import com.yu.vo.ReturnResultBean;
 
 /**
- * 菜场用户 Action类
+ * 用户 Action类
  * 
- * @author 金鱼
+ * @author 秀才
  */
 @Controller
 @Scope("prototype")
@@ -58,23 +58,23 @@ public class MarketAction extends MobileBaseAction {
 	
 	private WeixinRefundApplyBean weixinRefundApplyBean;
 
-	// 分页查询菜场用户产品信息列表
+	// 分页查询用户产品信息列表
 	public String queryMarketProduct() throws Exception {
-		log.info("分页查询菜场用户产品信息列表");
+		log.info("分页查询用户产品信息列表");
 		outPrintJson(marketService.queryMarketProduct(productQueryBean));
 		return null;
 	}
 
-	// 查询菜场用户产品分类信息列表
+	// 查询用户产品分类信息列表
 	public String queryMarketProductType() throws Exception {
-		log.info("查询菜场用户产品分类信息列表");
+		log.info("查询用户产品分类信息列表");
 		outPrintJson(marketService.queryMarketProductType());
 		return null;
 	}
 
-	// 查询菜场用户产品详细信息
+	// 查询用户产品详细信息
 	public String productDetailBySerial() throws Exception {
-		log.info("查询菜场用户产品详细信息");
+		log.info("查询用户产品详细信息");
 		String productSerial = null;
 		String productSpec = null;
 		if (productQueryBean != null) {
@@ -128,10 +128,10 @@ public class MarketAction extends MobileBaseAction {
 		return null;
 	}
 
-	// 增加菜摊用户订单
+	// 增加用户订单
 	// 由于移动端购物车都是放在前端来处理的，这里是最后的后端验证
 	public String generateMarketOrder() throws Exception {
-		log.info("增加菜摊用户订单");
+		log.info("增加用户订单");
 		outPrintJson(marketService.generateMarketOrder(getLoginUser(), mobileShoppingCartBean, customerOrderBean));
 		return null;
 	}
@@ -139,7 +139,7 @@ public class MarketAction extends MobileBaseAction {
 	// 微信退款
 	public String weixinRefund() throws Exception {
 		log.info("微信退款");
-		com.yu.vo.ReturnResultBean returnResultBean = marketService.weixinRefund(null, "wxb5cdd9028d9a5b131442941723");
+		ReturnResultBean returnResultBean = marketService.weixinRefund(null, "wxb5cdd9028d9a5b131442941723");
 		outPrintJson(returnResultBean);
 		return null;
 	}

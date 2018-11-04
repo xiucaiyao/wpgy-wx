@@ -8,18 +8,18 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.biz.vo.ReturnResultBean;
 import com.mobile.constants.SysMobileConstants;
 import com.mobile.po.wx.WeixinFansBean;
 import com.mobile.service.FansService;
 import com.mobile.vo.wx.FansBean;
 import com.mobile.vo.wx.LoginFansBean;
 import com.mobile.vo.wx.RegistFansBean;
-import com.yu.vo.ReturnResultBean;
 
 /**
  * 粉丝操作 Action类
  * 
- * @author 金鱼
+ * @author 秀才
  */
 @Controller
 @Scope("prototype")
@@ -35,9 +35,9 @@ public class FansAction extends MobileBaseAction {
 	/** 粉丝注册信息Bean */
 	private RegistFansBean registFansBean;
 
-	/** 绑定菜摊用户(登录) */
+	/** 绑定用户(登录) */
 	public String execute() throws Exception {
-		log.info("绑定菜摊用户");
+		log.info("绑定用户");
 		HttpServletRequest request = getRequest();
 		ReturnResultBean returnResultBean = null;
 		if (request.getSession().getAttribute(SysMobileConstants.WEIXIN_LOGIN_USER_SESSION) != null) {

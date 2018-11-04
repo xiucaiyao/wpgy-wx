@@ -3,7 +3,7 @@ package com.mobile.vo.wx;
 /**
  * 粉丝信息Bean
  * 
- * @author 金金
+ * @author 秀才
  */
 public class FansBean {
 

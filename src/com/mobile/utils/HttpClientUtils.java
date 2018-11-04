@@ -27,7 +27,7 @@ import org.apache.http.util.EntityUtils;
 /**
  * 后端http get/post请求工具类
  * 
- * @author 金金
+ * @author 秀才
  * 
  * @version 1.0
  */

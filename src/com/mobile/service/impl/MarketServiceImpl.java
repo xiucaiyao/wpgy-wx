@@ -18,6 +18,20 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.biz.dao.CustomerDao;
+import com.biz.dao.OrderDao;
+import com.biz.dao.ProductDao;
+import com.biz.po.CustomerAddressBean;
+import com.biz.po.CustomerBean;
+import com.biz.po.OrderBean;
+import com.biz.po.OrderDetailBean;
+import com.biz.po.PayTradeBean;
+import com.biz.po.ProductBean;
+import com.biz.utils.SysUtils;
+import com.biz.vo.CustomerOrderBean;
+import com.biz.vo.OrderQueryBean;
+import com.biz.vo.ProductQueryBean;
+import com.biz.vo.ReturnResultBean;
 import com.mobile.constants.SysMobileConstants;
 import com.mobile.constants.WeixinConstants;
 import com.mobile.dao.MarketDao;
@@ -28,25 +42,11 @@ import com.mobile.vo.wx.MobileShoppingCartBean;
 import com.mobile.vo.wx.MobileShoppingCartProductBean;
 import com.mobile.vo.wx.WechatPayDto;
 import com.wechat.utils.ClientCustomSSL;
-import com.yu.dao.CustomerDao;
-import com.yu.dao.OrderDao;
-import com.yu.dao.ProductDao;
-import com.yu.po.CustomerAddressBean;
-import com.yu.po.CustomerBean;
-import com.yu.po.OrderBean;
-import com.yu.po.OrderDetailBean;
-import com.yu.po.PayTradeBean;
-import com.yu.po.ProductBean;
-import com.yu.utils.SysUtils;
-import com.yu.vo.CustomerOrderBean;
-import com.yu.vo.OrderQueryBean;
-import com.yu.vo.ProductQueryBean;
-import com.yu.vo.ReturnResultBean;
 
 /**
- * 菜场用户一系列的Service操作类
+ * 用户一系列的Service操作类
  * 
- * @author 金金
+ * @author 秀才
  */
 @Service("marketServiceImpl")
 public class MarketServiceImpl implements MarketService{
@@ -66,12 +66,12 @@ public class MarketServiceImpl implements MarketService{
 	private CustomerDao customerDao;
 	
 	/**
-	 * 分页查询菜场用户产品信息列表
+	 * 分页查询用户产品信息列表
 	 * 
 	 * @param productQueryBean 产品信息查询Bean
 	 */
 	public ReturnResultBean queryMarketProduct(ProductQueryBean productQueryBean){
-		log.info("分页查询菜场用户产品信息列表");
+		log.info("分页查询用户产品信息列表");
 		ReturnResultBean returnResultBean = ReturnResultBean.newInstance();
 		if(productQueryBean == null){
 			productQueryBean = new ProductQueryBean();
@@ -87,10 +87,10 @@ public class MarketServiceImpl implements MarketService{
 	}
 	
 	/**
-	 * 查询菜场用户产品分类信息列表
+	 * 查询用户产品分类信息列表
 	 */
 	public ReturnResultBean queryMarketProductType(){
-		log.info("查询菜场用户产品分类信息列表");
+		log.info("查询用户产品分类信息列表");
 		ReturnResultBean returnResultBean = ReturnResultBean.newInstance();
 		returnResultBean.addReturnData("productTypeList", marketDao.queryMarketProductType(SysUtils.getSendDateStr()));
 		returnResultBean.operationSuccess();
@@ -98,12 +98,12 @@ public class MarketServiceImpl implements MarketService{
 	}
 	
 	/**
-	 * 查询菜场用户产品详细信息
+	 * 查询用户产品详细信息
 	 * @param productSerial 产品信息编号
 	 * @param productSpec 产品规格
 	 */
 	public ReturnResultBean productDetailBySerial(String productSerial, String productSpec){
-		log.info("查询菜场用户产品详细信息");
+		log.info("查询用户产品详细信息");
 		ReturnResultBean returnResultBean = ReturnResultBean.newInstance();
 		if (StringUtils.isBlank(productSerial)) {
 			returnResultBean.setMessage("非法操作！");
@@ -203,44 +203,6 @@ public class MarketServiceImpl implements MarketService{
 //		return returnResultBean;
 //	}
 
-	/**
-	 * 去购物车查看
-	 * 
-	 * @param shoppingCartBean 购物车Bean
-	 * @param customerBean 登录的客户信息Bean
-	 */
-//	public ReturnResultBean queryShoppingCart(ShoppingCartBean shoppingCartBean, FansBean fansBean) {
-//		log.info("去购物车查看");
-//		ReturnResultBean returnResultBean = ReturnResultBean.newInstance();
-//		if (!"大客户".equals(fansBean.getCustomerType()) || !"3".equals(fansBean.getCustomerType())) {
-//			returnResultBean.setMessage("很抱歉，您还不是我们的菜摊客户，不能通过在此窗口买菜！");
-//			return returnResultBean;
-//		}
-//		if (shoppingCartBean == null) {
-//			return returnResultBean;
-//		}
-//		List<ShoppingCartProductBean> shoppingCartProductList = shoppingCartBean.getShoppingCartProductList();
-//		if (shoppingCartProductList == null || shoppingCartProductList.isEmpty()) {
-//			return returnResultBean;
-//		}
-//		List<ProductBean> productList = marketDao.bathQueryMarketCustomerProduct(shoppingCartProductList);
-//		if(productList == null || productList.isEmpty() || productList.size() != shoppingCartProductList.size()){
-//			returnResultBean.setMessage("很抱歉，您购物车的部分商品现无法查到！");
-//			return returnResultBean;
-//		}
-//		for (ShoppingCartProductBean shoppingCartProductBean : shoppingCartProductList) {
-//			for(ProductBean productBean : productList){
-//				if(shoppingCartProductBean.getProductSerial().equals(productBean.getSerial()) && shoppingCartProductBean.getProductSpec().equals(productBean.getSpec())){
-//					shoppingCartProductBean.setProductPrice(productBean.getPrice());
-//					shoppingCartProductBean.setSmallpic(productBean.getSmallpic());
-//					break;
-//				}
-//			}
-//		}
-//		returnResultBean.addReturnData("shoppingCartProductList", shoppingCartProductList);
-//		returnResultBean.operationSuccess();
-//		return returnResultBean;
-//	}
 	
 	/**
 	 * 查看购物车
@@ -329,7 +291,7 @@ public class MarketServiceImpl implements MarketService{
 	}
 	
 	/**
-	 * 增加菜摊用户订单
+	 * 增加用户订单
 	 * 
 	 * @param loginCustomerBean 当前登录的客户信息Bean
 	 * @param mobileShoppingCartBean 购物车Bean
@@ -337,7 +299,7 @@ public class MarketServiceImpl implements MarketService{
 	 */
 	@Transactional(rollbackFor = { Exception.class })
 	public ReturnResultBean generateMarketOrder(FansBean fansBean, MobileShoppingCartBean mobileShoppingCartBean, CustomerOrderBean customerOrderBean) {
-		log.info("增加菜摊用户订单");
+		log.info("增加用户订单");
 		ReturnResultBean returnResultBean = ReturnResultBean.newInstance();
 		Date sendDate = SysUtils.getSendDate();
 		if(sendDate == null){
@@ -349,7 +311,7 @@ public class MarketServiceImpl implements MarketService{
 			return returnResultBean;
 		}
 		if (!"3".equals(fansBean.getCustomerType())) {
-			returnResultBean.setMessage("很抱歉，您还不是我们的菜摊客户，不能通过在此窗口选菜！");
+			returnResultBean.setMessage("很抱歉，您还不是我们的客户，不能通过在此窗口选择！");
 			return returnResultBean;
 		}
 		if(customerOrderBean == null){

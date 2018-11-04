@@ -3,13 +3,13 @@ package com.mobile.service;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+import com.biz.vo.ReturnResultBean;
 import com.mobile.vo.wx.RequestPostData;
-import com.yu.vo.ReturnResultBean;
 
 /**
  * 微信接口Service类
  * 
- * @author 金金
+ * @author 秀才
  */
 public interface WeixinService {
 

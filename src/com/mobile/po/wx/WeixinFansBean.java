@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 微信粉丝 Bean
  * 
- * @author 金鱼
+ * @author 秀才
  */
 public class WeixinFansBean {
 

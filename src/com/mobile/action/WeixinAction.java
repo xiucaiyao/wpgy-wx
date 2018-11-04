@@ -14,8 +14,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -26,18 +24,20 @@ import org.jdom.input.SAXBuilder;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.biz.vo.ReturnResultBean;
 import com.mobile.constants.SysMobileConstants;
 import com.mobile.constants.WeixinConstants;
 import com.mobile.service.WeixinService;
 import com.mobile.utils.WeixinAPIUtils;
 import com.mobile.vo.wx.RequestPostData;
 import com.mobile.vo.wx.WeiXinSdkConfigBean;
-import com.yu.vo.ReturnResultBean;
+
+import net.sf.json.JSONObject;
 
 /**
  * 移动端 微信Action基类
  * 
- * @author 金鱼
+ * @author 秀才
  */
 @Controller
 @Scope("prototype")

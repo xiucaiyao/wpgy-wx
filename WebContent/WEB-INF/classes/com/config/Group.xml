@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="group">
 
-	<!-- 查询用户蔬菜套餐信息 -->
+	<!-- 查询用户套餐信息 -->
 	<select id="queryGroupCard" parameterType="java.lang.String" resultType="java.util.Map">
 		<![CDATA[
 		select TB_GROUP_CARD.GROUP_CARD_ID, TB_GROUP_CARD.GROUP_CARD_NO, TB_GROUP_CARD.BEGIN_MONEY, TB_GROUP_CARD.NOW_MONEY, TB_GROUP_CARD.CARD_STATE,
@@ -33,7 +33,7 @@
 			left join TB_PRODUCT_INFO on TB_PRODUCT.SERIAL=TB_PRODUCT_INFO.SERIAL
 	</select>
 
-	<!-- 查询超过当日的蔬菜套餐配送日期 -->
+	<!-- 查询超过当日的套餐配送日期 -->
 	<select id="queryGroupOrder" resultType="java.util.Map" parameterType="java.util.Map">
 		<![CDATA[
 		select top 1 ORDER_ID, ORDER_DATE, SEND_DATE, ORDER_STATE, ORDER_SOURCE from TB_ORDER 

@@ -19,7 +19,7 @@ import com.mobile.constants.WeixinConstants;
 /**
  * 微信API工具类
  * 
- * @author 金鱼
+ * @author 秀才
  */
 public class WeixinAPIUtils {
 

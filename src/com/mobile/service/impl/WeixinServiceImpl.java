@@ -14,20 +14,20 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.biz.dao.OrderDao;
+import com.biz.po.OrderBean;
+import com.biz.po.PayTradeBean;
+import com.biz.vo.ReturnResultBean;
 import com.mobile.constants.WxAppConstants;
 import com.mobile.service.WeixinService;
 import com.mobile.utils.MakeReplyMessageUtil;
 import com.mobile.vo.wx.ReplyArticleBean;
 import com.mobile.vo.wx.RequestPostData;
-import com.yu.dao.OrderDao;
-import com.yu.po.OrderBean;
-import com.yu.po.PayTradeBean;
-import com.yu.vo.ReturnResultBean;
 
 /**
  * 微信接口Service类
  * 
- * @author 金金
+ * @author 秀才
  */
 @Service("weixinService")
 public class WeixinServiceImpl implements WeixinService{
@@ -63,7 +63,6 @@ public class WeixinServiceImpl implements WeixinService{
 				List<ReplyArticleBean> replyArticleList = new ArrayList<ReplyArticleBean>();
 				ReplyArticleBean replyArticleBean = new ReplyArticleBean();
 				replyArticleBean.setTitle("感谢您关注" + WxAppConstants.APP_NAME_EX);
-//				replyArticleBean.setDescription("这是一个提供优质蔬菜水果等农产品，致力于中国餐桌革命的企业！");
 				replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay_1.jpg");
 				replyArticleBean.setUrl("http://m2.yaochicai.com:8081"); //modify by Michael at "2016-05-20" for "更改图文跳转至微信用户"
 				replyArticleList.add(replyArticleBean);
@@ -73,7 +72,6 @@ public class WeixinServiceImpl implements WeixinService{
 				List<ReplyArticleBean> replyArticleList = new ArrayList<ReplyArticleBean>();
 				ReplyArticleBean replyArticleBean = new ReplyArticleBean();
 				replyArticleBean.setTitle("您已经关注了" + WxAppConstants.APP_NAME_EX);
-//				replyArticleBean.setDescription("一直以来感谢您对我们的大力支持，这是一个提供优质蔬菜水果等农产品，致力于中国餐桌革命的企业！");
 				replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay_1.jpg");
 				replyArticleBean.setUrl("http://m2.yaochicai.com:8081"); //modify by Michael at "2016-05-20" for "更改图文跳转至微信用户"
 				replyArticleList.add(replyArticleBean);

@@ -12,20 +12,20 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.biz.dao.CustomerDao;
+import com.biz.po.CustomerBean;
+import com.biz.utils.PinyinUtils;
+import com.biz.vo.ReturnResultBean;
 import com.mobile.dao.FansDao;
 import com.mobile.po.wx.WeixinFansBean;
 import com.mobile.service.FansService;
 import com.mobile.vo.wx.LoginFansBean;
 import com.mobile.vo.wx.RegistFansBean;
-import com.yu.dao.CustomerDao;
-import com.yu.po.CustomerBean;
-import com.yu.utils.PinyinUtils;
-import com.yu.vo.ReturnResultBean;
 
 /**
  * 粉丝绑定 注册等Service操作类
  * 
- * @author 金金
+ * @author 秀才
  */
 @Service("fansService")
 public class FansServiceImpl implements FansService {
@@ -39,12 +39,12 @@ public class FansServiceImpl implements FansService {
 	private CustomerDao customerDao;
 
 	/**
-	 * 查询粉丝用户对应的菜摊用户信息
+	 * 查询粉丝用户对应的用户信息
 	 * 
 	 * @param openId 粉丝在微信公众号的唯一标识
 	 */
 	public ReturnResultBean queryFansByOpenId(String openId) {
-		log.info("查询粉丝用户对应的菜摊用户信息");
+		log.info("查询粉丝用户对应的用户信息");
 		ReturnResultBean returnResultBean = ReturnResultBean.newInstance();
 		if (StringUtils.isBlank(openId)) {
 			returnResultBean.setMessage("openId不能为空");
@@ -93,7 +93,7 @@ public class FansServiceImpl implements FansService {
 		}
 		CustomerBean dbCustomerBean = customerList.get(0);
 		if (!"大客户".equals(dbCustomerBean.getCustomerType()) || !"3".equals(dbCustomerBean.getVipCustomerType())) {
-			returnResultBean.setMessage("只有菜摊用户才可以登录！");
+			returnResultBean.setMessage("只有用户才可以登录！");
 			return returnResultBean;
 		}
 		List<WeixinFansBean> weixinFansList = fansDao.queryFansByOpenId(openId);

@@ -7,7 +7,7 @@ import com.mobile.po.wx.WeixinFansBean;
 /**
  * 粉丝DAO接口
  * 
- * @author 金鱼
+ * @author 秀才
  */
 public interface FansDao extends MobileBaseDao{
 

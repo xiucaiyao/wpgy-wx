@@ -5,21 +5,21 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.StrutsStatics;
 
+import com.biz.vo.ReturnResultBean;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
-import com.yu.vo.ReturnResultBean;
+
+import net.sf.json.JSONObject;
 
 /**
  * Struts异常拦截器信息处理
  * 
- * @author 金鱼
+ * @author 秀才
  */
 public class ExceptionInterceptor implements Interceptor {
 

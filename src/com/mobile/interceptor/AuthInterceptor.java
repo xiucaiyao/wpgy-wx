@@ -9,13 +9,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.StrutsStatics;
 
+import com.biz.vo.ReturnResultBean;
 import com.mobile.action.FansAction;
 import com.mobile.action.WeixinAction;
 import com.mobile.constants.SysMobileConstants;
@@ -26,7 +25,8 @@ import com.mobile.utils.WeixinAPIUtils;
 import com.mobile.vo.wx.FansBean;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
-import com.yu.vo.ReturnResultBean;
+
+import net.sf.json.JSONObject;
 
 public class AuthInterceptor implements Interceptor {
 

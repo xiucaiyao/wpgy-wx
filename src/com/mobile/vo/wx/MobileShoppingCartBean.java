@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 移动端购物车信息Bean
  * 
- * @author 金金
+ * @author 秀才
  */
 public class MobileShoppingCartBean {
 

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page  pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" href="/favicon.ico">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<title>我要买菜</title>
+		<title>王胖果业</title>
 		<link href="${pageContext.request.contextPath}/css/mobile/sm.min.css" rel="stylesheet" />
 		<link href="${pageContext.request.contextPath}/css/mobile/sm-extend.min.css" rel="stylesheet" />
 		<link href="${pageContext.request.contextPath}/css/mobile/app.css" rel="stylesheet" />

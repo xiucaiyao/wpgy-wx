@@ -8,8 +8,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,16 +15,18 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.biz.vo.ReturnResultBean;
 import com.mobile.constants.SysMobileConstants;
 import com.mobile.vo.wx.FansBean;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.yu.vo.ReturnResultBean;
+
+import net.sf.json.JSONObject;
 
 /**
  * 移动端Action基类
  * 
- * @author 金鱼
+ * @author 秀才
  */
 @Controller
 @Scope("prototype")

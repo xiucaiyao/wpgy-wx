@@ -3,7 +3,7 @@ package com.mobile.constants;
 /**
  * 系统静态变量
  * 
- * @author 金鱼
+ * @author 秀才
  * 
  */
 public class SysMobileConstants {

@@ -10,7 +10,7 @@ import com.mobile.utils.WeixinAPIUtils;
 /**
  * 微信SDK配置Bean
  * 
- * @author 金鱼
+ * @author 秀才
  */
 public class WeiXinSdkConfigBean {
 

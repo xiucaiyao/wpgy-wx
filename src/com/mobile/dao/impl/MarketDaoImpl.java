@@ -7,17 +7,17 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Repository;
 
+import com.biz.dao.impl.BaseDaoImpl;
+import com.biz.po.DistionaryBean;
+import com.biz.po.ProductBean;
+import com.biz.vo.ProductQueryBean;
 import com.mobile.dao.MarketDao;
 import com.mobile.po.wx.WeixinRefundApplyBean;
-import com.yu.dao.impl.BaseDaoImpl;
-import com.yu.po.DistionaryBean;
-import com.yu.po.ProductBean;
-import com.yu.vo.ProductQueryBean;
 
 /**
- * 菜场用户DAO操作实现类
+ * 用户DAO操作实现类
  * 
- * @author 金鱼
+ * @author 秀才
  */
 @Repository("marketDao")
 public class MarketDaoImpl extends BaseDaoImpl implements MarketDao{
@@ -25,28 +25,28 @@ public class MarketDaoImpl extends BaseDaoImpl implements MarketDao{
 	private static Log log = LogFactory.getLog(MarketDaoImpl.class);
 	
 	/**
-	 * 查询菜场用户商品列表信息
+	 * 查询用户商品列表信息
 	 * @param productQueryBean 产品查询Bean
 	 */
 	public List<ProductBean> queryMarketProduct(ProductQueryBean productQueryBean){
-		log.info("查询菜场用户商品列表信息");
+		log.info("查询用户商品列表信息");
 		return getSqlSession().selectList("weixin.queryMarketProduct", productQueryBean);
 	}
 	
 	/**
-	 * 查询菜场用户产品分类信息列表
+	 * 查询用户产品分类信息列表
 	 */
 	public List<DistionaryBean> queryMarketProductType(String priceDate){
-		log.info("查询菜场用户产品分类信息列表");
+		log.info("查询用户产品分类信息列表");
 		return getSqlSession().selectList("weixin.queryMarketProductType", priceDate);
 	}
 	
 	/**
-	 * 批量查询菜摊客户选择的产品信息
+	 * 批量查询客户选择的产品信息
 	 * @param mobileShoppingCartProductList 购物车产品列表
 	 */
 	public List<ProductBean> bathQueryMarketCustomerProduct(Map<String, Object> shoppingCartProductMap){
-		log.info("批量查询菜摊客户选择的产品信息");
+		log.info("批量查询客户选择的产品信息");
 		return getSqlSession().selectList("weixin.bathQueryMarketCustomerProduct", shoppingCartProductMap);
 	}
 	

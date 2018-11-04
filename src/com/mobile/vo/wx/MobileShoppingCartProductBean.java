@@ -3,7 +3,7 @@ package com.mobile.vo.wx;
 /**
  * 移动端购物车产品Bean
  * 
- * @author 金鱼
+ * @author 秀才
  */
 public class MobileShoppingCartProductBean {
 

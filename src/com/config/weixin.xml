@@ -23,7 +23,7 @@
 		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
 	</resultMap>
 	
-	<resultMap id="productMap" type="com.yu.po.ProductBean" >
+	<resultMap id="productMap" type="com.biz.po.ProductBean" >
 		<id column="PRODUCT_ID" property="productId" jdbcType="VARCHAR" />
 		<result column="SERIAL" property="serial" jdbcType="VARCHAR" />
 		<result column="NAME" property="name" jdbcType="VARCHAR" />
@@ -104,7 +104,7 @@
 		</if>
 	</sql>
 	
-	<!-- 查询菜场用户商品列表信息 -->
+	<!-- 查询用户商品列表信息 -->
 	<select id="queryMarketProduct" parameterType="productQueryBean" resultMap="productMap">  
         select top ${pageItems} FUNC_MARKET_CUSTOMER_PRODUCT_PRICE.serial, name, price, product_sale_type, spec, smallpic from FUNC_MARKET_CUSTOMER_PRODUCT_PRICE('${priceDate}')
 			where is_online=1
@@ -113,7 +113,7 @@
 				<include refid="product_where_clause" /> order by FUNC_MARKET_CUSTOMER_PRODUCT_PRICE.display_order
 	</select>
 	
-	<!-- 查询菜场用户产品分类信息列表 -->
+	<!-- 查询用户产品分类信息列表 -->
 	<select id="queryMarketProductType" resultType="distionaryBean" parameterType="java.lang.String">
 		select VC_PARENT_CODE as vcParentCode,
 			VC_CODE as vcCode,
@@ -126,7 +126,7 @@
 			order by DISPLAY_ORDER
     </select>
     
-    <!-- 批量查询菜摊客户选择的产品信息 -->
+    <!-- 批量查询客户选择的产品信息 -->
     <select id="bathQueryMarketCustomerProduct" resultMap="productMap" parameterType="java.util.Map">
 	    select serial, name, price, product_sale_type, spec, smallpic from FUNC_MARKET_CUSTOMER_PRODUCT_PRICE('${priceDate}')
 				where is_online=1 and price is not null and 

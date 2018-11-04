@@ -12,7 +12,7 @@ import com.mobile.po.wx.WeixinFansBean;
 /**
  * 粉丝DAO操作实现类
  * 
- * @author 金鱼
+ * @author 秀才
  */
 @Repository("fansDao")
 public class FansDaoImpl extends MobileBaseDaoImpl implements FansDao {

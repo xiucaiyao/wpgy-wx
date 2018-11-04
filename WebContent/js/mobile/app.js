@@ -9,7 +9,8 @@ var app = app || {};
 	app.Config = {};
 	app.Config.contextPath = "/wpgy-wx"; // 项目名
 	app.Config.imgServerUrl = "/wpgy-wx"; // 资源路径
-	app.Config.projectPath = "http://101.132.161.50:8080"; // 项目路径
+	//app.Config.projectPath = "http://101.132.161.50:8080"; // 项目路径
+	app.Config.projectPath = "http://localhost:8080"; // 项目路径
 	app.Config.isDebug = false;
 
 	Date.prototype.format = function (format) {
@@ -279,7 +280,7 @@ var app = app || {};
 				this.desc = $("title").text();
 			}
 			if (!this.desc) {
-				this.desc = "生态蔬菜、有机鲜活农产品，配送到家。";
+				this.desc = "王胖果品，配送到家。";
 			}
 		},
 

@@ -23,7 +23,7 @@
 		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
 		<result column="PRICEGRADE" property="priceGrade" jdbcType="VARCHAR" />
 	</resultMap>
-	<resultMap id="orderCardMap" type="com.yu.po.OrderCardBean" >
+	<resultMap id="orderCardMap" type="com.biz.po.OrderCardBean" >
 		<id column="ORDER_CARD_ID" property="orderCardId" jdbcType="VARCHAR" />
 		<result column="ORDER_CARD_NO" property="orderCardNo" jdbcType="VARCHAR" />
 		<result column="PAY_PASSWORD" property="payPassword" jdbcType="VARCHAR" />

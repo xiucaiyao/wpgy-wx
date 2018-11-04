@@ -2,37 +2,35 @@ package com.mobile.service;
 
 import java.io.UnsupportedEncodingException;
 
-import org.springframework.transaction.annotation.Transactional;
-
+import com.biz.vo.CustomerOrderBean;
+import com.biz.vo.OrderQueryBean;
+import com.biz.vo.ProductQueryBean;
+import com.biz.vo.ReturnResultBean;
 import com.mobile.po.wx.WeixinRefundApplyBean;
 import com.mobile.vo.wx.FansBean;
 import com.mobile.vo.wx.MobileShoppingCartBean;
-import com.yu.vo.CustomerOrderBean;
-import com.yu.vo.OrderQueryBean;
-import com.yu.vo.ProductQueryBean;
-import com.yu.vo.ReturnResultBean;
 
 /**
- * 菜场用户一系列的Service操作类接口
+ * 用户一系列的Service操作类接口
  * 
- * @author 金金
+ * @author 秀才
  */
 public interface MarketService {
 
 	/**
-	 * 分页查询菜场用户产品信息列表
+	 * 分页查询用户产品信息列表
 	 * 
 	 * @param productQueryBean 产品信息查询Bean
 	 */
 	public ReturnResultBean queryMarketProduct(ProductQueryBean productQueryBean);
 	
 	/**
-	 * 查询菜场用户产品分类信息列表
+	 * 查询用户产品分类信息列表
 	 */
 	public ReturnResultBean queryMarketProductType();
 	
 	/**
-	 * 查询菜场用户产品详细信息
+	 * 查询用户产品详细信息
 	 * @param productSerial 产品信息编号
 	 * @param productSpec 产品规格
 	 */
@@ -80,7 +78,7 @@ public interface MarketService {
 	public ReturnResultBean viewShoppingCart(MobileShoppingCartBean mobileShoppingCartBean, FansBean fansBean);
 	
 	/**
-	 * 增加菜摊用户订单
+	 * 增加用户订单
 	 * 
 	 * @param loginCustomerBean 当前登录的客户信息Bean
 	 * @param mobileShoppingCartBean 购物车Bean

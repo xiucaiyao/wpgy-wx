@@ -1,18 +1,18 @@
 package com.mobile.service;
 
+import com.biz.vo.ReturnResultBean;
 import com.mobile.vo.wx.LoginFansBean;
 import com.mobile.vo.wx.RegistFansBean;
-import com.yu.vo.ReturnResultBean;
 
 /**
  * 粉丝绑定 注册等Service操作类
  * 
- * @author 金金
+ * @author 秀才
  */
 public interface FansService {
 
 	/**
-	 * 查询粉丝用户对应的菜摊用户信息
+	 * 查询粉丝用户对应的用户信息
 	 * @param openId 粉丝在微信公众号的唯一标识
 	 */
 	public ReturnResultBean queryFansByOpenId(String openId);
