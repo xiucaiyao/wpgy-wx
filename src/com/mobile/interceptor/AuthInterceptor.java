@@ -1,8 +1,10 @@
 package com.mobile.interceptor;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
+import java.util.Properties;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -13,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.StrutsStatics;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 
 import com.biz.vo.ReturnResultBean;
 import com.mobile.action.FansAction;
@@ -63,7 +66,11 @@ public class AuthInterceptor implements Interceptor {
 		HttpServletRequest request = (HttpServletRequest) actioninvocation.getInvocationContext().get(StrutsStatics.HTTP_REQUEST);
 		HttpServletResponse response = (HttpServletResponse) actioninvocation.getInvocationContext().get(StrutsStatics.HTTP_RESPONSE);
 		//add by yaoxc at 20181028 for "测试-跳过登陆认证"
-		request.getSession().setAttribute(SysMobileConstants.WEIXIN_LOGIN_USER_SESSION, new FansBean());
+		Properties properties = PropertiesLoaderUtils.loadAllProperties("application.properties");
+		String env = properties.getProperty("wx.app.env");
+		if ("test".equals(env)) {
+			request.getSession().setAttribute(SysMobileConstants.WEIXIN_LOGIN_USER_SESSION, new FansBean());
+		}
 		//end
 		if (request.getSession().getAttribute(SysMobileConstants.WEIXIN_LOGIN_USER_SESSION) == null) {
 			// 如果当前用户信息没有登录session就从Cookie里取粉丝信息
