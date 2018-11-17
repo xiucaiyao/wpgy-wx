@@ -24,7 +24,7 @@ public class WeixinConstants {
 	public static final String WEIXIN_TOKEN = "wpgy_wx";
 	
 	/** 公众号消息加解密密钥 */
-	public static final String WEIXIN_ENCODING_AES_KEY = "";
+	public static final String WEIXIN_ENCODING_AES_KEY = "01oxBWVRiirxYdNs1P1hrnZlYSIC2qRGvzYviQAH5Xh";
 
 	/** 公众号消息加解密方式 */
 	public static final String WEIXIN_ENCODING_AES_KEY_TYPE = "";
