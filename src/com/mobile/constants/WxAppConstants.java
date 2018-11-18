@@ -9,6 +9,7 @@ import org.springframework.core.io.support.PropertiesLoaderUtils;
  * 微信app常量
  */
 public class WxAppConstants {
+	public static final String MD5_SCRECT = "wpgy.md5.wx";
 	public static final String WEIXIN_BACKURI ="/market!wechatPay.action";
 	public static final String WEIXIN_NOTIFYURI ="/payWeixinAsync.action";
 	
