@@ -21,6 +21,9 @@ public class RegistFansBean {
 
 	/** 登录密码 */
 	private String password;
+	
+	/** 地址 */
+	private String address;
 
 	public RegistFansBean() {
 
@@ -65,4 +68,13 @@ public class RegistFansBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 }

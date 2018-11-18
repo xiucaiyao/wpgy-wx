@@ -92,10 +92,10 @@ public class FansServiceImpl implements FansService {
 			return returnResultBean;
 		}
 		CustomerBean dbCustomerBean = customerList.get(0);
-		if (!"大客户".equals(dbCustomerBean.getCustomerType()) || !"3".equals(dbCustomerBean.getVipCustomerType())) {
-			returnResultBean.setMessage("只有用户才可以登录！");
-			return returnResultBean;
-		}
+//		if (!"大客户".equals(dbCustomerBean.getCustomerType()) || !"3".equals(dbCustomerBean.getVipCustomerType())) {
+//			returnResultBean.setMessage("只有用户才可以登录！");
+//			return returnResultBean;
+//		}
 		List<WeixinFansBean> weixinFansList = fansDao.queryFansByOpenId(openId);
 		if (weixinFansList != null && !weixinFansList.isEmpty()) {
 			returnResultBean.setMessage("您已经绑定我们的电商平台无需登录！");
@@ -163,6 +163,7 @@ public class FansServiceImpl implements FansService {
 		String loginName = registFansBean.getLoginName();
 		String password = registFansBean.getPassword();
 		String phone = registFansBean.getPhone();
+		String address = registFansBean.getAddress();
 		if (StringUtils.isBlank(name) || StringUtils.isBlank(gender) || StringUtils.isBlank(loginName) || StringUtils.isBlank(password) || StringUtils.isBlank(phone)) {
 			returnResultBean.setMessage("注册信息验证不能通过...");
 			return returnResultBean;
@@ -178,11 +179,11 @@ public class FansServiceImpl implements FansService {
 		customerBean.setCustomerId(fansDao.getTableId("TB_CUSTOMER"));
 		customerBean.setName(name);
 		customerBean.setPhone(phone);
-		customerBean.setCustomerType("充值卡客户");
+		customerBean.setCustomerType("wx");
 		customerBean.setLoginName(loginName);
 		customerBean.setPassword(password);
 		customerBean.setNameFirstHeadLetter(PinyinUtils.getPinYinHeadChar(name));
-		customerBean.setMemo("通过微信平台注册用户");
+		customerBean.setMemo(address);
 		customerBean.setCreateTime(new Date());
 		customerBean.setCreateUser(customerBean.getCustomerId());
 		customerDao.insertCustomer(customerBean);

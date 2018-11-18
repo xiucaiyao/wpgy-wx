@@ -3,7 +3,6 @@ package com.mobile.interceptor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
-import java.util.Properties;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -14,13 +13,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.StrutsStatics;
-import org.springframework.core.io.support.PropertiesLoaderUtils;
 
 import com.biz.vo.ReturnResultBean;
 import com.mobile.action.FansAction;
 import com.mobile.action.WeixinAction;
 import com.mobile.constants.SysMobileConstants;
 import com.mobile.constants.WeixinConstants;
+import com.mobile.constants.WxAppConstants;
 import com.mobile.po.wx.WeixinFansBean;
 import com.mobile.service.FansService;
 import com.mobile.utils.WeixinAPIUtils;
@@ -65,9 +64,7 @@ public class AuthInterceptor implements Interceptor {
 		HttpServletRequest request = (HttpServletRequest) actioninvocation.getInvocationContext().get(StrutsStatics.HTTP_REQUEST);
 		HttpServletResponse response = (HttpServletResponse) actioninvocation.getInvocationContext().get(StrutsStatics.HTTP_RESPONSE);
 		//add by yaoxc at 20181028 for "测试-跳过登陆认证"
-		Properties properties = PropertiesLoaderUtils.loadAllProperties("application.properties");
-		String env = properties.getProperty("wx.app.env");
-		if ("test".equals(env)) {
+		if (WxAppConstants.ENV_TEST.equals(WxAppConstants.getEnvFlag())) {
 			request.getSession().setAttribute(SysMobileConstants.WEIXIN_LOGIN_USER_SESSION, new FansBean());
 		}
 		//end
@@ -111,7 +108,8 @@ public class AuthInterceptor implements Interceptor {
 		// response.setCharacterEncoding("UTF-8");
 		String current_url = request.getRequestURI() + (request.getQueryString() == null ? "" : ("?" + request.getQueryString()));
 		// TODO: 跳转页面
-		String redirect_uri = request.getScheme() + "://" + request.getServerName() + (request.getServerPort() == 80 ? "" : (":" + request.getServerPort())) + request.getContextPath() + "/getOpenIdByCode.action?goto_uri=" + URLEncoder.encode(current_url, "UTF-8");
+		String redirect_uri = request.getScheme() + "://" + request.getServerName() + (request.getServerPort() == 80 || request.getServerPort() == 443 ? "" : (":" + request.getServerPort())) + request.getContextPath() + "/getOpenIdByCode.action?goto_uri=" + URLEncoder.encode(current_url, "UTF-8");
+		//String redirect_uri = request.getScheme() + "://" + request.getServerName() + (request.getServerPort() == 80 ? "" : (":" + request.getServerPort())) + request.getContextPath() + "/getOpenIdByCode.action?goto_uri=" + URLEncoder.encode(current_url, "UTF-8");
 		log.info("redirect_uri:" + redirect_uri);
 		String state = String.valueOf(System.currentTimeMillis());
 		System.out.println("APP_ID" + WeixinConstants.WEIXIN_APP_ID);

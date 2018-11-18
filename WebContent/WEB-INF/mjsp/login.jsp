@@ -51,7 +51,7 @@
 					</table>
 				</div>
 				<div id="logindiv" class="login_txline">
-					<a href="#" id="zhuce">注册点餐用户</a>
+					<a href="#" id="zhuce">注册用户</a>
 					<a class="float-right color-a font6" href="#">忘记密码</a>
 				</div>
 

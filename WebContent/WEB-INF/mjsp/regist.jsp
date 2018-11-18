@@ -103,6 +103,18 @@
 								</div>
 							</div>
 						</li>
+						
+						<li>
+							<div class="item-content">
+								<div class="item-media"><i class="icon icon-form-name"></i></div>
+								<div class="item-inner">
+									<div class="item-title label">收货地址</div>
+									<div class="item-input">
+										<input type="text" data-name="verify" id="address" placeholder="填写街道门牌地址即可" class="">
+									</div>
+								</div>
+							</div>
+						</li>
 					</ul>
 				</div>
 				<div class="content-block">
@@ -163,6 +175,7 @@
 										"registFansBean.phone": $('#phone').val(),
 										"registFansBean.loginName": $('#usernmae').val(),
 										"registFansBean.password": $('#password').val(),
+										"registFansBean.address": $('#address').val()
 									}
 									ymc.ajax({
 										url: app.api.regist,
