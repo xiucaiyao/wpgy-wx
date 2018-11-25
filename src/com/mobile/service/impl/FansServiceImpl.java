@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.biz.dao.CustomerDao;
+import com.biz.po.CustomerAddressBean;
 import com.biz.po.CustomerBean;
 import com.biz.utils.PinyinUtils;
 import com.biz.vo.ReturnResultBean;
@@ -186,8 +187,22 @@ public class FansServiceImpl implements FansService {
 		customerBean.setMemo(address);
 		customerBean.setCreateTime(new Date());
 		customerBean.setCreateUser(customerBean.getCustomerId());
+		customerBean.setLinkman(name);
+		customerBean.setLinkmanTel(phone);
 		customerDao.insertCustomer(customerBean);
 		returnResultBean.operationSuccess();
+		
+		//add by xiucai at 20181125 for "注册的时候保存客户地址信息";begin
+		CustomerAddressBean customerAddressBean = new CustomerAddressBean();
+		customerAddressBean.setCustomerAddressId(fansDao.getTableId("TB_CUSTOMER_ADDRESS"));
+		customerAddressBean.setCustomerId(customerBean.getCustomerId());
+		customerAddressBean.setLinkman(customerBean.getLinkman());
+		customerAddressBean.setLinkmanTel(customerBean.getLinkmanTel());
+		customerAddressBean.setDetailAddress(customerBean.getMemo());
+		customerAddressBean.setIsDefaultAddress(true);
+		customerDao.insertCustomerAddress(customerAddressBean);
+		//end.
+		
 		return returnResultBean;
 	}
 

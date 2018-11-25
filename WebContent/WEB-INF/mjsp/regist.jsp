@@ -170,7 +170,7 @@
 							success: function(jsonData) {
 								if (jsonData.isSuccess == true) {
 									var data = {
-										"registFansBean.name": $('#usernmae').val(),
+										"registFansBean.name": $('#name').val(),
 										"registFansBean.gender": $('#password').val(),
 										"registFansBean.phone": $('#phone').val(),
 										"registFansBean.loginName": $('#usernmae').val(),

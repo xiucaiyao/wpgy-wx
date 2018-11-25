@@ -40,7 +40,6 @@ import com.mobile.service.MarketService;
 import com.mobile.vo.wx.FansBean;
 import com.mobile.vo.wx.MobileShoppingCartBean;
 import com.mobile.vo.wx.MobileShoppingCartProductBean;
-import com.mobile.vo.wx.RegistFansBean;
 import com.mobile.vo.wx.WechatPayDto;
 import com.wechat.utils.ClientCustomSSL;
 
@@ -241,35 +240,33 @@ public class MarketServiceImpl implements MarketService{
 			returnResultBean.setMessage("您的客户信息缺失，请联系客服处理！");
 			return returnResultBean;
 		}
-//		CustomerAddressBean queryCustomerAddressBean = new CustomerAddressBean(null, fansBean.getCustomerId());
-//		queryCustomerAddressBean.setIsDefaultAddress(true);
-//		List<CustomerAddressBean> customerAddressList = customerDao.queryCustomerAddress(queryCustomerAddressBean);
-//		if (customerAddressList == null || customerAddressList.isEmpty()) {
-//			returnResultBean.setMessage("您还没有地址信息，请联系客服处理！");
-//			return returnResultBean;
-//		}
-//		CustomerAddressBean dbCustomerAddressBean = customerAddressList.get(0);
-//		returnResultBean.addReturnData("receiveMan", dbCustomerAddressBean.getLinkman());
-//		returnResultBean.addReturnData("phone", dbCustomerAddressBean.getLinkmanTel());
-//		String address = "";
-//		if(StringUtils.isNotBlank(dbCustomerAddressBean.getProvince())){
-//			address += (dbCustomerAddressBean.getProvince()+" ");
-//		}
-//		if(StringUtils.isNotBlank(dbCustomerAddressBean.getCity())){
-//			address += (dbCustomerAddressBean.getCity()+" ");
-//		}
-//		if(StringUtils.isNotBlank(dbCustomerAddressBean.getCounty())){
-//			address += (dbCustomerAddressBean.getCounty()+" ");
-//		}
-//		if(StringUtils.isNotBlank(dbCustomerAddressBean.getTown())){
-//			address += (dbCustomerAddressBean.getTown()+" ");
-//		}
-//		if(StringUtils.isNotBlank(dbCustomerAddressBean.getDetailAddress())){
-//			address += (dbCustomerAddressBean.getDetailAddress()+" ");
-//		}
-		returnResultBean.addReturnData("receiveMan", customerBean.getName());
-		returnResultBean.addReturnData("phone", customerBean.getPhone());
-		String address = customerBean.getMemo();
+		CustomerAddressBean queryCustomerAddressBean = new CustomerAddressBean(null, fansBean.getCustomerId());
+		queryCustomerAddressBean.setIsDefaultAddress(true);
+		List<CustomerAddressBean> customerAddressList = customerDao.queryCustomerAddress(queryCustomerAddressBean);
+		if (customerAddressList == null || customerAddressList.isEmpty()) {
+			returnResultBean.setMessage("您还没有地址信息，请联系客服处理！");
+			return returnResultBean;
+		}
+		CustomerAddressBean dbCustomerAddressBean = customerAddressList.get(0);
+		returnResultBean.addReturnData("receiveMan", dbCustomerAddressBean.getLinkman());
+		returnResultBean.addReturnData("phone", dbCustomerAddressBean.getLinkmanTel());
+		String address = "";
+		if(StringUtils.isNotBlank(dbCustomerAddressBean.getProvince())){
+			address += (dbCustomerAddressBean.getProvince()+" ");
+		}
+		if(StringUtils.isNotBlank(dbCustomerAddressBean.getCity())){
+			address += (dbCustomerAddressBean.getCity()+" ");
+		}
+		if(StringUtils.isNotBlank(dbCustomerAddressBean.getCounty())){
+			address += (dbCustomerAddressBean.getCounty()+" ");
+		}
+		if(StringUtils.isNotBlank(dbCustomerAddressBean.getTown())){
+			address += (dbCustomerAddressBean.getTown()+" ");
+		}
+		if(StringUtils.isNotBlank(dbCustomerAddressBean.getDetailAddress())){
+			address += (dbCustomerAddressBean.getDetailAddress()+" ");
+		}
+		//String address = customerBean.getMemo();
 		returnResultBean.addReturnData("address", address);
 		boolean isValid = true;
 		for(MobileShoppingCartProductBean mobileShoppingCartProductBean : mobileShoppingCartProductList){
