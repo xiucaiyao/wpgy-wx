@@ -61,7 +61,7 @@
     	<action name="fans" class="fansAction" />
     	<action name="market" class="marketAction" />
     	
-    	<action name="m2redirect" class="weixinAction" method="m2redirect"/>
+    	<!-- <action name="m2redirect" class="weixinAction" method="m2redirect"/> -->
     	
     </package>
 </struts>

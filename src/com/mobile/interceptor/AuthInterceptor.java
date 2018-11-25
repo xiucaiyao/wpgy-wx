@@ -108,11 +108,10 @@ public class AuthInterceptor implements Interceptor {
 		// response.setCharacterEncoding("UTF-8");
 		String current_url = request.getRequestURI() + (request.getQueryString() == null ? "" : ("?" + request.getQueryString()));
 		// TODO: 跳转页面
-		String redirect_uri = request.getScheme() + "://" + request.getServerName() + (request.getServerPort() == 80 || request.getServerPort() == 443 ? "" : (":" + request.getServerPort())) + request.getContextPath() + "/getOpenIdByCode.action?goto_uri=" + URLEncoder.encode(current_url, "UTF-8");
-		//String redirect_uri = request.getScheme() + "://" + request.getServerName() + (request.getServerPort() == 80 ? "" : (":" + request.getServerPort())) + request.getContextPath() + "/getOpenIdByCode.action?goto_uri=" + URLEncoder.encode(current_url, "UTF-8");
+		String redirect_uri = request.getScheme() + "://" + request.getServerName() + ((request.getServerPort() == 80 || request.getServerPort() == 443) ? "" : (":" + request.getServerPort())) + request.getContextPath() + "/getOpenIdByCode.action?goto_uri=" + URLEncoder.encode(current_url, "UTF-8");
 		log.info("redirect_uri:" + redirect_uri);
 		String state = String.valueOf(System.currentTimeMillis());
-		System.out.println("APP_ID" + WeixinConstants.WEIXIN_APP_ID);
+		//System.out.println("APP_ID" + WeixinConstants.WEIXIN_APP_ID);
 		String url = WeixinAPIUtils.getAuthorizeCodeAPI(WeixinConstants.WEIXIN_APP_ID, redirect_uri, state);
 		log.info("url:" + url);
 		// response.getWriter().print("<script>window.location.href='" + url + ";</script>");
