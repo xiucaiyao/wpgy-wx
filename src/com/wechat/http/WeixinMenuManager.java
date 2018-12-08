@@ -48,11 +48,12 @@ public class WeixinMenuManager {
 		String accessToken = getAccessToken(); //16_cWgQV7hiFdqFcRqXWUxl9yxDWPVBv7j2WIhRTRvugKY5OL9U9tvPNbQISZle3l-PvfgdHCckrfJnnD9_jVfdCjY8EH-VVRlWGhaP8wAqAs62KFaZ3Urc5-XmMSRCznO884ExvL-AXePmzAWBFSFiACAVIV
 		String createMenuUrl = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=" + accessToken;
 
+		//url处一定放登陆的链接，不能放其它的action
 		String requestBody = 
 				"{\"button\":[{" 
 					+ "\"type\":\"view\"," 
 					+ "\"name\":\"果品市场\","
-					+ "\"url\":\"https://www.wangpangguopin.com/wpgy-wx/market!pageJump.action\"" 
+					+ "\"url\":\"https://www.wangpangguopin.com/wpgy-wx/fans!gotoLogin.action\""   
 					+ " }]}";
 		
 		System.out.println("requestBody:" + requestBody);
