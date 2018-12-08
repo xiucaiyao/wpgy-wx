@@ -37,7 +37,7 @@
 								<div class="item-inner">
 									<div class="item-title label">姓名</div>
 									<div class="item-input">
-										<input type="text" data-name="verify" id="name" placeholder="Your name">
+										<input type="text" data-name="verify" id="name" placeholder="">
 									</div>
 								</div>
 							</div>
@@ -64,7 +64,7 @@
 								<div class="item-inner">
 									<div class="item-title label">电话</div>
 									<div class="item-input">
-										<input type="tel" data-name="verify" id="phone" placeholder="Phone">
+										<input type="tel" data-name="verify" id="phone" placeholder="">
 									</div>
 								</div>
 							</div>
@@ -76,7 +76,7 @@
 								<div class="item-inner">
 									<div class="item-title label">用户名</div>
 									<div class="item-input">
-										<input type="text" data-name="verify" id="usernmae" placeholder="Your name">
+										<input type="text" data-name="verify" id="usernmae" placeholder="">
 									</div>
 								</div>
 							</div>
@@ -87,7 +87,7 @@
 								<div class="item-inner">
 									<div class="item-title label">密码</div>
 									<div class="item-input">
-										<input type="password" data-name="verify" id="password" placeholder="Password" class="">
+										<input type="password" data-name="verify" id="password" placeholder="" class="">
 									</div>
 								</div>
 							</div>
@@ -98,7 +98,7 @@
 								<div class="item-inner">
 									<div class="item-title label">确认密码</div>
 									<div class="item-input">
-										<input type="password" data-name="verify" id="password2" placeholder="Again password" class="">
+										<input type="password" data-name="verify" id="password2" placeholder="" class="">
 									</div>
 								</div>
 							</div>

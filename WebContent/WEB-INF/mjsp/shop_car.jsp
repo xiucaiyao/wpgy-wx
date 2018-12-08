@@ -119,18 +119,20 @@
 					{@/each}
 					<li class="item-content">
 						<div class="item-inner">
-							<div class="item-title "><span class="font75" >共</span> <span class="color-red font85" style="line-height: 1.3rem;font-weight:500">￥<span id="count-price">^{price}</span></span></div>
+							<div class="item-title ">
+								<span class="font75" >共</span> 
+								<span class="color-red font85" style="line-height: 1.3rem;font-weight:500">￥<span id="count-price">^{price}</span>  </span>
+							</div>
 							<div class="item-after">
 								<button id="choice-ok" class="button button-fill button-danger">立即下单</button>
 							</div>
 						</div>
 					</li>
-					<li class="item-content">
-						<div class="item-inner">
-							<div class="item-title"></div>
-							<div class="item-after" style="color:red;">
-								订单一旦支付不能再修改，请核对后再支付！
-							</div>
+					<li>
+						<div></div>
+						<div> <span>{@if data} ^{data.priceLimitTips}{@/if}</span> </div>
+						<div style="color:red;">
+							<span>订单一旦支付不能再修改，请核对后再支付！</span>
 						</div>
 					</li>
 				</ul>

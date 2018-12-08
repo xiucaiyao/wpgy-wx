@@ -34,6 +34,7 @@ import com.biz.vo.ProductQueryBean;
 import com.biz.vo.ReturnResultBean;
 import com.mobile.constants.SysMobileConstants;
 import com.mobile.constants.WeixinConstants;
+import com.mobile.constants.WxAppConstants;
 import com.mobile.dao.MarketDao;
 import com.mobile.po.wx.WeixinRefundApplyBean;
 import com.mobile.service.MarketService;
@@ -293,6 +294,9 @@ public class MarketServiceImpl implements MarketService{
 		} else {
 			returnResultBean.setMessage("部分产品已经失效，请重新选择！");
 		}
+		//add by xiucai at 20181208 for "页面增加价格-运费提示"
+		returnResultBean.addReturnData("priceLimitTips", WxAppConstants.getPriceLimitTips()); 
+		//end.
 		return returnResultBean;
 	}
 	
@@ -407,7 +411,7 @@ public class MarketServiceImpl implements MarketService{
 		orderBean.setOrderPackingType(null);
 		orderBean.setOrderPackingPrice(null);
 		orderBean.setOrderType("非套餐");
-		orderBean.setSendMoney(null);
+		
 		orderBean.setOrderSource("微信商城");
 		orderBean.setMemo(customerOrderBean.getMemo());
 		orderBean.setCreateUser("system");
@@ -427,9 +431,14 @@ public class MarketServiceImpl implements MarketService{
 			orderDao.insertOrderDetail(orderDetailBean);
 		}
 		orderBean.setOrderMoney(orderMoney);
+		if (orderMoney < WxAppConstants.getOrderPriceLimit()) {
+			orderBean.setSendMoney(WxAppConstants.getOrderSendPrice());
+			returnResultBean.setMessage("订单提交成功(含运费"+ WxAppConstants.getOrderSendPrice() +"),2秒后跳转...");
+		}
 		orderDao.insertOrder(orderBean);
 		returnResultBean.addReturnData("orderBean", orderBean);
-		returnResultBean.setMessage("尊敬的VIP客户，您网上选餐成功，订单号：" + orderBean.getOrderId() + "，请等待我们的处理...");
+		returnResultBean.setMessage("订单提交成功,2秒后跳转...");
+		//returnResultBean.setMessage("尊敬的VIP客户，您网上购买成功，订单号：" + orderBean.getOrderId() + "，请等待我们的处理...");
 		returnResultBean.operationSuccess();
 		return returnResultBean;
 	}
@@ -439,7 +448,7 @@ public class MarketServiceImpl implements MarketService{
 	 */
 	@Transactional(rollbackFor = { Exception.class })
 	public ReturnResultBean payOrderByWeixin(FansBean fansBean, String orderId) {
-		log.info("支付宝支付订单...");
+		log.info("支付订单...");
 		ReturnResultBean returnResultBean = ReturnResultBean.newInstance();
 		/**** 验证订单信息的存在 ****/
 		if (StringUtils.isBlank(orderId)) {
@@ -474,7 +483,7 @@ public class MarketServiceImpl implements MarketService{
 			payTradeBean.setLoginName(customerBean.getLoginName());
 			payTradeBean.setCardNo(customerBean.getOrderCard());
 			payTradeBean.setBeginPayTime(new Date());
-			payTradeBean.setPayMoney(orderBean.getOrderMoney());
+			payTradeBean.setPayMoney(orderBean.getOrderMoney() + orderBean.getSendMoney());
 			payTradeBean.setPayStatus(1);
 			payTradeBean.setCustomerName(customerBean.getName());
 			payTradeBean.setMemo("微信订单支付信息，订单编号：" + orderBean.getOrderId());
@@ -483,7 +492,7 @@ public class MarketServiceImpl implements MarketService{
 		}
 		returnResultBean.addReturnData("outTradeNo", payTradeBean.getPayTradeId());
 		returnResultBean.addReturnData("orderName", "" + customerBean.getName() + "的订单");
-		returnResultBean.addReturnData("orderMoney", String.valueOf(orderBean.getOrderMoney()));
+		returnResultBean.addReturnData("orderMoney", String.valueOf(orderBean.getOrderMoney() + orderBean.getSendMoney()));
 		returnResultBean.addReturnData("orderDescribe", "欢迎到天蓝地绿农庄购买商品，你的订单号：" + orderBean.getOrderId());
 		returnResultBean.operationSuccess();
 		return returnResultBean;

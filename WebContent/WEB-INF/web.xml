@@ -6,7 +6,7 @@
 
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>wx_app.root</param-value>
+		<param-value>wpgy-wx.root</param-value>
 	</context-param>
 
 	<context-param>
