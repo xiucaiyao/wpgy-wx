@@ -242,30 +242,4 @@ public class WeixinAction extends MobileBaseAction {
 		return null;
 	}
 
-	// add by Xiucai at 2016-01-10 for "m2redirect - 响应宋的跳转", begin:
-	public String m2redirect() throws Exception {
-		log.info("m2redirect ...");
-		HttpServletResponse response = getResponse();
-		HttpServletRequest request = getRequest();
-		
-		String code = request.getParameter("code");
-		String state = request.getParameter("state");
-		if (StringUtils.isBlank(code)) {
-			log.info("粉丝账号信息无法获取");
-			request.setAttribute("error_message", "系统正在维护，请稍后操作！");
-			return "error";
-		}
-		//String redirect_uri = "http://m2.yaochicai.com:8081/getOpenIdByCode.aspx?code=" + code + "&state=" + state;
-		String redirect_uri = "http://m2.yaochicai.com:8081/getOpenIdByCode.aspx?code=" + code;
-		log.info("redirect_uri:" + redirect_uri);
-		//log.info("APP_ID:" + WeixinConstants.WEIXIN_APP_ID);
-		String url = WeixinAPIUtils.getAuthorizeCodeAPI(WeixinConstants.WEIXIN_APP_ID, redirect_uri, state);
-		log.info("url:" + url);
-		
-		response.sendRedirect(URLDecoder.decode(url, "UTF-8"));
-		return null;
-
-	}
-	//end;
-
 }

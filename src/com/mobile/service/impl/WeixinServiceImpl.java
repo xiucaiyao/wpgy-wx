@@ -64,7 +64,7 @@ public class WeixinServiceImpl implements WeixinService{
 				ReplyArticleBean replyArticleBean = new ReplyArticleBean();
 				replyArticleBean.setTitle("感谢您关注" + WxAppConstants.APP_NAME_EX);
 				replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay_1.jpg");
-				replyArticleBean.setUrl("http://m2.yaochicai.com:8081"); //modify by Michael at "2016-05-20" for "更改图文跳转至微信用户"
+				replyArticleBean.setUrl(projectPath+"/fans!gotoLogin.action"); 
 				replyArticleList.add(replyArticleBean);
 				xmlMessage = MakeReplyMessageUtil.sendNewsmessage(tousername, fromusername, replyArticleList);
 			} else if("SCAN".equals(eventType)){
@@ -73,7 +73,7 @@ public class WeixinServiceImpl implements WeixinService{
 				ReplyArticleBean replyArticleBean = new ReplyArticleBean();
 				replyArticleBean.setTitle("您已经关注了" + WxAppConstants.APP_NAME_EX);
 				replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay_1.jpg");
-				replyArticleBean.setUrl("http://m2.yaochicai.com:8081"); //modify by Michael at "2016-05-20" for "更改图文跳转至微信用户"
+				replyArticleBean.setUrl(projectPath+"/fans!gotoLogin.action"); 
 				replyArticleList.add(replyArticleBean);
 				xmlMessage = MakeReplyMessageUtil.sendNewsmessage(tousername, fromusername, replyArticleList);
 			} else if("unsubscribe".equals(eventType)){
@@ -83,7 +83,7 @@ public class WeixinServiceImpl implements WeixinService{
 				replyArticleBean.setTitle(WxAppConstants.APP_NAME_EX);
 //				replyArticleBean.setDescription("一直以来感谢您对我们的大力支持，我们会更加努力让您满意！");
 				replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay_1.jpg");
-				replyArticleBean.setUrl("http://m2.yaochicai.com:8081"); //modify by Michael at "2016-05-20" for "更改图文跳转至微信用户"
+				replyArticleBean.setUrl(projectPath+"/fans!gotoLogin.action"); 
 				replyArticleList.add(replyArticleBean);
 				xmlMessage = MakeReplyMessageUtil.sendNewsmessage(tousername, fromusername, replyArticleList);
 			}
@@ -95,7 +95,7 @@ public class WeixinServiceImpl implements WeixinService{
 			replyArticleBean.setTitle( WxAppConstants.APP_NAME_EX);
 //			replyArticleBean.setDescription("一直以来感谢您对我们的大力支持，我们会更加努力让您满意！");
 			replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay_1.jpg");
-			replyArticleBean.setUrl("http://m2.yaochicai.com:8081"); //modify by Michael at "2016-05-20" for "更改图文跳转至微信用户"
+			replyArticleBean.setUrl(projectPath+"/fans!gotoLogin.action");
 			replyArticleList.add(replyArticleBean);
 			xmlMessage = MakeReplyMessageUtil.sendNewsmessage(tousername, fromusername, replyArticleList);
 		}
