@@ -3,6 +3,7 @@ package com.mobile.utils;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
@@ -83,6 +85,35 @@ public class HttpClientUtils {
 			httpClient = new DefaultHttpClient();
 			HttpPost httpPost = new HttpPost(url);
 			HttpEntity entity = createEntity(parameterMap);
+			if (entity != null) {
+				httpPost.setEntity(entity);
+			}
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpEntity httpEntity = httpResponse.getEntity();
+			if (httpEntity != null) {
+				return EntityUtils.toString(httpEntity, encoding);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 关闭连接，释放资源
+			httpClient.getConnectionManager().shutdown();
+		}
+		return null;
+	}
+	
+	/**
+	 * http客户端URL post请求
+	 * 
+	 * @param url 客户端请求链接
+	 * @param param 参数str
+	 */
+	public static String post(String url, String param) {
+		HttpClient httpClient = null;
+		try {
+			httpClient = new DefaultHttpClient();
+			HttpPost httpPost = new HttpPost(url);
+			HttpEntity entity = new StringEntity(param,Charset.forName("UTF-8"));
 			if (entity != null) {
 				httpPost.setEntity(entity);
 			}
