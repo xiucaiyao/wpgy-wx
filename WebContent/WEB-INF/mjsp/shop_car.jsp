@@ -129,8 +129,8 @@
 						</div>
 					</li>
 					<li>
-						<div></div>
-						<div> <span>{@if data} ^{data.priceLimitTips}{@/if}</span> </div>
+						<div><span>&nbsp;&nbsp;</span></div>
+						<div><span>{@if data} ^{data.priceLimitTips}{@/if}</span></div>
 						<div style="color:red;">
 							<span>订单一旦支付不能再修改，请核对后再支付！</span>
 						</div>

@@ -94,7 +94,7 @@ public class OrderBean {
 	private String payType;
 
 	/** 配送金额 */
-	private Double sendMoney;
+	private Double sendMoney = 0.0;
 
 	/** 订单来源 */
 	private String orderSource;

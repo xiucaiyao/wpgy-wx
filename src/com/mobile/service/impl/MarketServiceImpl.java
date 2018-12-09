@@ -434,6 +434,8 @@ public class MarketServiceImpl implements MarketService{
 		if (orderMoney < WxAppConstants.getOrderPriceLimit()) {
 			orderBean.setSendMoney(WxAppConstants.getOrderSendPrice());
 			returnResultBean.setMessage("订单提交成功(含运费"+ WxAppConstants.getOrderSendPrice() +"),2秒后跳转...");
+		} else {
+			orderBean.setSendMoney(0.0);
 		}
 		orderDao.insertOrder(orderBean);
 		returnResultBean.addReturnData("orderBean", orderBean);
