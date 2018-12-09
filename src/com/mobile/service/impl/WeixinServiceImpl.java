@@ -63,7 +63,7 @@ public class WeixinServiceImpl implements WeixinService{
 				List<ReplyArticleBean> replyArticleList = new ArrayList<ReplyArticleBean>();
 				ReplyArticleBean replyArticleBean = new ReplyArticleBean();
 				replyArticleBean.setTitle("感谢您关注" + WxAppConstants.APP_NAME_EX);
-				replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay_1.jpg");
+				replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay.jpg");
 				replyArticleBean.setUrl(projectPath+"/fans!gotoLogin.action"); 
 				replyArticleList.add(replyArticleBean);
 				xmlMessage = MakeReplyMessageUtil.sendNewsmessage(tousername, fromusername, replyArticleList);
@@ -72,7 +72,7 @@ public class WeixinServiceImpl implements WeixinService{
 				List<ReplyArticleBean> replyArticleList = new ArrayList<ReplyArticleBean>();
 				ReplyArticleBean replyArticleBean = new ReplyArticleBean();
 				replyArticleBean.setTitle("您已经关注了" + WxAppConstants.APP_NAME_EX);
-				replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay_1.jpg");
+				replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay.jpg");
 				replyArticleBean.setUrl(projectPath+"/fans!gotoLogin.action"); 
 				replyArticleList.add(replyArticleBean);
 				xmlMessage = MakeReplyMessageUtil.sendNewsmessage(tousername, fromusername, replyArticleList);
@@ -82,7 +82,7 @@ public class WeixinServiceImpl implements WeixinService{
 				ReplyArticleBean replyArticleBean = new ReplyArticleBean();
 				replyArticleBean.setTitle(WxAppConstants.APP_NAME_EX);
 //				replyArticleBean.setDescription("一直以来感谢您对我们的大力支持，我们会更加努力让您满意！");
-				replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay_1.jpg");
+				replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay.jpg");
 				replyArticleBean.setUrl(projectPath+"/fans!gotoLogin.action"); 
 				replyArticleList.add(replyArticleBean);
 				xmlMessage = MakeReplyMessageUtil.sendNewsmessage(tousername, fromusername, replyArticleList);
@@ -94,7 +94,7 @@ public class WeixinServiceImpl implements WeixinService{
 			ReplyArticleBean replyArticleBean = new ReplyArticleBean();
 			replyArticleBean.setTitle( WxAppConstants.APP_NAME_EX);
 //			replyArticleBean.setDescription("一直以来感谢您对我们的大力支持，我们会更加努力让您满意！");
-			replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay_1.jpg");
+			replyArticleBean.setPicUrl(projectPath+"/images/mobile/replay.jpg");
 			replyArticleBean.setUrl(projectPath+"/fans!gotoLogin.action");
 			replyArticleList.add(replyArticleBean);
 			xmlMessage = MakeReplyMessageUtil.sendNewsmessage(tousername, fromusername, replyArticleList);
