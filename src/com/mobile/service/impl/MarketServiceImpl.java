@@ -1,6 +1,7 @@
 package com.mobile.service.impl;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -102,9 +103,11 @@ public class MarketServiceImpl implements MarketService{
 	 * 查询用户产品详细信息
 	 * @param productSerial 产品信息编号
 	 * @param productSpec 产品规格
+	 * @throws UnsupportedEncodingException 
 	 */
-	public ReturnResultBean productDetailBySerial(String productSerial, String productSpec){
-		log.info("查询用户产品详细信息");
+	public ReturnResultBean productDetailBySerial(String productSerial, String productSpec) throws UnsupportedEncodingException{
+		productSpec = URLDecoder.decode(productSpec, "UTF-8");
+		log.info("查询用户产品详细信息,productSerial:"+ productSerial + ",productSpec:" + productSpec);
 		ReturnResultBean returnResultBean = ReturnResultBean.newInstance();
 		if (StringUtils.isBlank(productSerial)) {
 			returnResultBean.setMessage("非法操作！");

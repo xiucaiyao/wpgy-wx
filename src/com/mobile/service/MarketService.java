@@ -34,7 +34,7 @@ public interface MarketService {
 	 * @param productSerial 产品信息编号
 	 * @param productSpec 产品规格
 	 */
-	public ReturnResultBean productDetailBySerial(String productSerial, String productSpec);
+	public ReturnResultBean productDetailBySerial(String productSerial, String productSpec) throws UnsupportedEncodingException;
 	
 	/**
 	 * 加入商品到购物车
