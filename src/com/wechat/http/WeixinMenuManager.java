@@ -53,7 +53,7 @@ public class WeixinMenuManager {
 				"{\"button\":[{" 
 					+ "\"type\":\"view\"," 
 					+ "\"name\":\"果品市场\","
-					+ "\"url\":\"https://www.wangpangguopin.com/wpgy-wx/fans!gotoLogin.action\""   
+					+ "\"url\":\"https://www.wangpangguopin.com/wpgy-wx/market!gotoMarket.action\""   
 					+ " }]}";
 		
 		System.out.println("requestBody:" + requestBody);

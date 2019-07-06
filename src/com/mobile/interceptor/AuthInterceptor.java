@@ -61,8 +61,20 @@ public class AuthInterceptor implements Interceptor {
 		if (object instanceof WeixinAction) {
 			return actioninvocation.invoke();
 		}
+		
 		HttpServletRequest request = (HttpServletRequest) actioninvocation.getInvocationContext().get(StrutsStatics.HTTP_REQUEST);
 		HttpServletResponse response = (HttpServletResponse) actioninvocation.getInvocationContext().get(StrutsStatics.HTTP_RESPONSE);
+		
+		//需求[20190706]：让公众号用户在未登陆前，就可以浏览果品市场
+		String uri = request.getRequestURI();
+		log.info("uri:" + uri);
+		if (uri.contains("market!gotoMarket") 
+				|| uri.contains("market!queryMarketProduct") 
+				|| uri.contains("market!queryMarketProductType")) {
+			log.info("免拦截的方法：" + uri);
+			return actioninvocation.invoke();
+		}
+		
 		//add by yaoxc at 20181028 for "测试-跳过登陆认证"
 		if (WxAppConstants.ENV_TEST.equals(WxAppConstants.getEnvFlag())) {
 			request.getSession().setAttribute(SysMobileConstants.WEIXIN_LOGIN_USER_SESSION, new FansBean());

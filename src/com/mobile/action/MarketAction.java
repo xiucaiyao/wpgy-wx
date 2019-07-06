@@ -17,6 +17,7 @@ import com.biz.vo.CustomerOrderBean;
 import com.biz.vo.OrderQueryBean;
 import com.biz.vo.ProductQueryBean;
 import com.biz.vo.ReturnResultBean;
+import com.mobile.constants.SysMobileConstants;
 import com.mobile.constants.WeixinConstants;
 import com.mobile.po.wx.WeixinRefundApplyBean;
 import com.mobile.service.MarketService;
@@ -57,6 +58,19 @@ public class MarketAction extends MobileBaseAction {
 	private OrderQueryBean orderQueryBean;
 	
 	private WeixinRefundApplyBean weixinRefundApplyBean;
+	
+	/**
+	 * 进入果品市场
+	 * 
+	 * 需求背景：让公众号用户在未登陆前，就可以浏览果品市场
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public String gotoMarket() throws Exception {
+		log.info("进入果品市场。。。");
+		return "marketIndex";
+	}
 
 	// 分页查询用户产品信息列表
 	public String queryMarketProduct() throws Exception {
